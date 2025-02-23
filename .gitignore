@@ -52,3 +52,5 @@ out/
 *.dSYM/
 *.core
 *.gdb
+
+*.iml
