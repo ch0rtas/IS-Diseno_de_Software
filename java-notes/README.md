@@ -907,3 +907,1454 @@ public class Main {
 ---
 
 ---
+
+# 7. Encapsulamiento y Abstracción en Java 🔒
+
+En este capítulo aprenderás dos conceptos clave de la Programación Orientada a Objetos (POO): **encapsulamiento** y **abstracción**. Ambos son fundamentales para escribir código más modular, seguro y mantenible.
+
+---
+
+## 7.1 Propósito y Uso del Encapsulamiento
+El **encapsulamiento** consiste en restringir el acceso directo a los atributos de una clase y permitir la manipulación de los datos únicamente a través de métodos específicos (*getters* y *setters*).
+
+### Ventajas del Encapsulamiento:
+- Protege los datos de modificaciones accidentales o no deseadas.
+- Mejora la modularidad y el mantenimiento del código.
+- Controla el acceso a los atributos.
+
+### Ejemplo: Implementación de Encapsulamiento
+```java
+public class Persona {
+    // Atributos privados para proteger los datos
+    private String nombre;
+    private int edad;
+
+    // Constructor para inicializar los atributos
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Métodos getter para obtener el valor de los atributos
+    public String getNombre() {
+        return nombre; // Devuelve el valor del atributo nombre
+    }
+
+    public int getEdad() {
+        return edad; // Devuelve el valor del atributo edad
+    }
+
+    // Métodos setter para modificar los valores de los atributos
+    public void setNombre(String nombre) {
+        this.nombre = nombre; // Actualiza el atributo nombre con el valor proporcionado
+    }
+
+    public void setEdad(int edad) {
+        if (edad >= 0) { // Validación: la edad no puede ser negativa
+            this.edad = edad;
+        } else {
+            System.out.println("La edad no puede ser negativa.");
+        }
+    }
+}
+
+// Clase principal para probar el encapsulamiento
+public class Main {
+    public static void main(String[] args) {
+        Persona persona = new Persona("Juan", 25);
+
+        // Acceso a los datos a través de getters
+        System.out.println("Nombre: " + persona.getNombre()); // Imprime: Nombre: Juan
+        System.out.println("Edad: " + persona.getEdad());   // Imprime: Edad: 25
+
+        // Modificación de datos usando setters
+        persona.setNombre("Ana");
+        persona.setEdad(30);
+
+        // Mostrar los datos actualizados
+        System.out.println("Nuevo Nombre: " + persona.getNombre()); // Imprime: Nuevo Nombre: Ana
+        System.out.println("Nueva Edad: " + persona.getEdad());     // Imprime: Nueva Edad: 30
+    }
+}
+```
+
+---
+
+## 7.2 Métodos `getter` y `setter`
+Los métodos **getter** y **setter** son herramientas clave para el encapsulamiento. Permiten leer y escribir los valores de los atributos privados de manera controlada.
+
+### Ejemplo de Validación con `setter`
+```java
+public class CuentaBancaria {
+    private double saldo;
+
+    // Constructor para inicializar el saldo
+    public CuentaBancaria(double saldoInicial) {
+        if (saldoInicial >= 0) {
+            this.saldo = saldoInicial;
+        } else {
+            System.out.println("El saldo inicial no puede ser negativo.");
+            this.saldo = 0;
+        }
+    }
+
+    // Getter para obtener el saldo
+    public double getSaldo() {
+        return saldo;
+    }
+
+    // Setter para actualizar el saldo con validación
+    public void setSaldo(double saldo) {
+        if (saldo >= 0) {
+            this.saldo = saldo;
+        } else {
+            System.out.println("El saldo no puede ser negativo.");
+        }
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+        System.out.println("Saldo inicial: " + cuenta.getSaldo()); // Imprime: Saldo inicial: 1000.0
+
+        cuenta.setSaldo(500); // Actualiza el saldo a 500
+        System.out.println("Nuevo saldo: " + cuenta.getSaldo());  // Imprime: Nuevo saldo: 500.0
+
+        cuenta.setSaldo(-200); // Intenta establecer un saldo negativo
+        // Imprime: El saldo no puede ser negativo.
+    }
+}
+```
+
+---
+
+## 7.3 Clases Abstractas
+Una **clase abstracta** no se puede instanciar directamente. Sirve como base para otras clases y puede incluir métodos abstractos (sin implementación) y métodos concretos (con implementación).
+
+### Ejemplo de Clase Abstracta
+```java
+// Clase abstracta
+abstract class Animal {
+    // Método abstracto (sin implementación)
+    abstract void hacerSonido();
+
+    // Método concreto (con implementación)
+    void dormir() {
+        System.out.println("Zzz..."); // Imprime: Zzz...
+    }
+}
+
+// Clase concreta que extiende la clase abstracta
+class Perro extends Animal {
+    @Override
+    void hacerSonido() {
+        System.out.println("Guau guau"); // Implementación específica para Perro
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        // Animal animal = new Animal(); // Error: no se puede instanciar una clase abstracta
+        Perro perro = new Perro();
+        perro.hacerSonido(); // Imprime: Guau guau
+        perro.dormir();      // Imprime: Zzz...
+    }
+}
+```
+
+---
+
+## 7.4 Interfaces
+Una **interfaz** define un contrato que una clase debe cumplir. Todas las variables en una interfaz son constantes, y los métodos son abstractos por defecto (a partir de Java 8, pueden incluir métodos concretos con `default`).
+
+### Ejemplo de Interfaz
+```java
+// Definición de la interfaz
+interface Volador {
+    void volar(); // Método abstracto
+}
+
+// Clase que implementa la interfaz
+class Pajaro implements Volador {
+    @Override
+    public void volar() {
+        System.out.println("El pájaro está volando."); // Implementación específica
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        Pajaro pajaro = new Pajaro();
+        pajaro.volar(); // Imprime: El pájaro está volando.
+    }
+}
+```
+
+### Diferencias entre Clases Abstractas e Interfaces:
+| Característica          | Clase Abstracta            | Interfaz                |
+|-------------------------|----------------------------|-------------------------|
+| Métodos                 | Puede tener métodos concretos y abstractos | Solo métodos abstractos (excepto `default` y `static` desde Java 8) |
+| Herencia/Implementación | Una clase puede extender solo una clase abstracta | Una clase puede implementar múltiples interfaces |
+| Uso                     | Para relación "es un(a)"  | Para relación "puede hacer" |
+
+---
+
+---
+
+---
+
+# 8. Herencia y Polimorfismo en Java 🔄
+
+En este capítulo exploraremos dos conceptos fundamentales en programación orientada a objetos: **herencia** y **polimorfismo**. Veremos cómo aprovechar estas características para crear programas más reutilizables y flexibles.
+
+---
+
+## 8.1 Herencia en Java
+La **herencia** permite a una clase (subclase) adquirir las propiedades y métodos de otra clase (superclase). Esto facilita la reutilización del código y la extensión de las funcionalidades existentes.
+
+### Uso de `extends`
+La palabra clave `extends` se utiliza para indicar que una clase hereda de otra.
+
+```java
+// Clase base o superclase
+class Animal {
+    void hacerSonido() {
+        System.out.println("Sonido genérico de animal");
+    }
+}
+
+// Subclase que hereda de Animal
+class Perro extends Animal {
+    void moverCola() {
+        System.out.println("El perro mueve la cola");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Perro perro = new Perro();
+
+        // Métodos heredados de la superclase
+        perro.hacerSonido(); // Salida: Sonido genérico de animal
+
+        // Métodos propios de la subclase
+        perro.moverCola(); // Salida: El perro mueve la cola
+    }
+}
+```
+
+### Sobrescritura de métodos (`@Override`)
+La sobrescritura permite redefinir el comportamiento de un método de la superclase en la subclase.
+
+```java
+// Clase base o superclase
+class Animal {
+    void hacerSonido() {
+        System.out.println("Sonido genérico de animal");
+    }
+}
+
+// Subclase que sobrescribe el método hacerSonido
+class Perro extends Animal {
+    @Override
+    void hacerSonido() {
+        System.out.println("Guau guau");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Perro perro = new Perro();
+
+        // Llama al método sobrescrito en la subclase
+        perro.hacerSonido(); // Salida: Guau guau
+    }
+}
+```
+
+---
+
+## 8.2 Polimorfismo
+El **polimorfismo** permite a un objeto tomar múltiples formas. En Java, se puede implementar a través de la **sobrecarga de métodos** y el **polimorfismo en tiempo de ejecución**.
+
+### Sobrecarga de métodos
+La **sobrecarga** ocurre cuando varios métodos en una clase tienen el mismo nombre pero diferentes parámetros.
+
+```java
+class Calculadora {
+    // Método para sumar dos enteros
+    int sumar(int a, int b) {
+        return a + b;
+    }
+
+    // Método sobrecargado para sumar tres enteros
+    int sumar(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Método sobrecargado para sumar dos números en punto flotante
+    double sumar(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+
+        System.out.println(calc.sumar(5, 10)); // Salida: 15
+        System.out.println(calc.sumar(5, 10, 15)); // Salida: 30
+        System.out.println(calc.sumar(5.5, 10.5)); // Salida: 16.0
+    }
+}
+```
+
+### Polimorfismo en tiempo de ejecución
+En este caso, el tipo de método que se invoca se decide en tiempo de ejecución. Esto se logra mediante la sobrescritura de métodos y el uso de referencias de la superclase.
+
+```java
+// Clase base o superclase
+class Animal {
+    void hacerSonido() {
+        System.out.println("Sonido genérico de animal");
+    }
+}
+
+// Subclase
+class Perro extends Animal {
+    @Override
+    void hacerSonido() {
+        System.out.println("Guau guau");
+    }
+}
+
+// Subclase
+class Gato extends Animal {
+    @Override
+    void hacerSonido() {
+        System.out.println("Miau miau");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Uso de referencias de la superclase
+        Animal animal1 = new Perro();
+        Animal animal2 = new Gato();
+
+        // Determina el método a ejecutar en tiempo de ejecución
+        animal1.hacerSonido(); // Salida: Guau guau
+        animal2.hacerSonido(); // Salida: Miau miau
+    }
+}
+```
+
+---
+
+## Resumen
+- **Herencia** permite reutilizar y extender el código existente.
+- **Sobrescritura** redefine el comportamiento de métodos en las subclases.
+- **Polimorfismo** hace que el mismo método pueda comportarse de manera diferente dependiendo del contexto.
+
+Estos conceptos son esenciales para escribir código limpio, modular y mantenible en Java.
+
+---
+
+---
+
+---
+
+# 9. Manejo de Excepciones en Java ⚠️
+
+El manejo de excepciones es una técnica esencial para controlar errores en tiempo de ejecución y mantener la estabilidad de nuestras aplicaciones. A continuación, exploraremos cómo funcionan las excepciones en Java y cómo utilizarlas correctamente.
+
+---
+
+## 9.1 Introducción a las Excepciones
+
+Una excepción en Java es un evento que interrumpe el flujo normal de un programa. Puede ser provocada por errores de programación (como una división por cero) o por situaciones externas (como la falta de un archivo).
+
+### Jerarquía de Excepciones
+
+- **Checked Exceptions:** Se deben manejar explícitamente en tiempo de compilación. Ejemplo: `IOException`.
+- **Unchecked Exceptions:** Son errores de programación. Ejemplo: `NullPointerException`.
+- **Errores:** Problemas graves que generalmente no se pueden manejar. Ejemplo: `OutOfMemoryError`.
+
+```java
+// Ejemplo de una excepción no controlada
+int resultado = 10 / 0; // Esto lanza una ArithmeticException
+```
+
+---
+
+## 9.2 Estructura `try-catch-finally`
+
+La estructura básica para manejar excepciones en Java incluye `try`, `catch` y `finally`.
+
+### Ejemplo 1: Manejo básico con `try-catch`
+
+```java
+public class ManejoExcepciones {
+    public static void main(String[] args) {
+        try {
+            int resultado = 10 / 0; // Genera una ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Error: División por cero"); // Maneja la excepción
+        }
+    }
+}
+```
+
+### Ejemplo 2: Uso de `finally`
+
+El bloque `finally` siempre se ejecuta, haya o no una excepción.
+
+```java
+public class ManejoExcepciones {
+    public static void main(String[] args) {
+        try {
+            int[] numeros = {1, 2, 3};
+            System.out.println(numeros[5]); // Genera un ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: Índice fuera de rango");
+        } finally {
+            System.out.println("Bloque finally ejecutado"); // Siempre se ejecuta
+        }
+    }
+}
+```
+
+---
+
+## 9.3 Excepciones Personalizadas
+
+Podemos crear nuestras propias excepciones extendiendo la clase `Exception`.
+
+### Ejemplo: Excepción personalizada
+
+```java
+// Definimos una excepción personalizada
+class MiExcepcion extends Exception {
+    public MiExcepcion(String mensaje) {
+        super(mensaje); // Llama al constructor de Exception
+    }
+}
+
+public class EjemploExcepcionPersonalizada {
+    public static void main(String[] args) {
+        try {
+            lanzarExcepcion();
+        } catch (MiExcepcion e) {
+            System.out.println("Excepción atrapada: " + e.getMessage());
+        }
+    }
+
+    static void lanzarExcepcion() throws MiExcepcion {
+        throw new MiExcepcion("Este es un error personalizado"); // Lanza la excepción personalizada
+    }
+}
+```
+
+---
+
+## 9.4 `throw` y `throws`
+
+### `throw`
+
+La palabra clave `throw` se utiliza para lanzar una excepción explícitamente.
+
+```java
+public class EjemploThrow {
+    public static void main(String[] args) {
+        try {
+            validarEdad(15); // Esto lanzará una excepción
+        } catch (IllegalArgumentException e) {
+            System.out.println("Excepción capturada: " + e.getMessage());
+        }
+    }
+
+    static void validarEdad(int edad) {
+        if (edad < 18) {
+            throw new IllegalArgumentException("La edad debe ser mayor o igual a 18");
+        }
+        System.out.println("Edad válida");
+    }
+}
+```
+
+### `throws`
+
+Se utiliza en la declaración de un método para indicar que puede lanzar excepciones.
+
+```java
+import java.io.*;
+
+public class EjemploThrows {
+    public static void main(String[] args) {
+        try {
+            leerArchivo(); // Este método puede lanzar IOException
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
+
+    static void leerArchivo() throws IOException {
+        File archivo = new File("archivo.txt");
+        FileReader lector = new FileReader(archivo); // Puede lanzar IOException
+    }
+}
+```
+
+---
+
+## Conclusión
+
+El manejo de excepciones en Java es fundamental para construir aplicaciones robustas y confiables. Usar `try-catch-finally`, excepciones personalizadas, y comprender el uso de `throw` y `throws` nos permite manejar errores de manera efectiva.
+
+---
+
+---
+
+---
+
+# 10. Colecciones en Java 🗃️
+
+Las colecciones en Java son estructuras que nos permiten almacenar y gestionar conjuntos de elementos de manera eficiente. En este capítulo exploraremos las principales colecciones como arrays, listas, conjuntos y mapas, así como el uso de iteradores.
+
+---
+
+## 10.1 Arrays
+
+Los arrays son estructuras de datos que almacenan elementos del mismo tipo en posiciones contiguas de memoria. Tienen un tamaño fijo definido al momento de su creación.
+
+```java
+// Declaración y uso de un array
+int[] numeros = {1, 2, 3, 4, 5}; // Array de enteros
+
+// Acceso a elementos y recorrido con un bucle
+for (int i = 0; i < numeros.length; i++) {
+    System.out.println("Número: " + numeros[i]); // Muestra cada número del array
+}
+
+// Modificación de un elemento
+numeros[2] = 10; // Cambia el valor en la posición 2 (índice base 0)
+System.out.println("Nuevo valor en posición 2: " + numeros[2]);
+```
+
+---
+
+## 10.2 Listas (`ArrayList`)
+
+`ArrayList` es una colección que permite almacenar elementos de tamaño dinámico y proporciona métodos para gestionarlos fácilmente.
+
+```java
+import java.util.ArrayList;
+
+public class EjemploArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> frutas = new ArrayList<>(); // Crear una lista de strings
+
+        // Añadir elementos
+        frutas.add("Manzana");
+        frutas.add("Plátano");
+        frutas.add("Naranja");
+
+        // Recorrer la lista
+        for (String fruta : frutas) {
+            System.out.println("Fruta: " + fruta); // Muestra cada fruta
+        }
+
+        // Eliminar un elemento
+        frutas.remove("Plátano"); // Elimina "Plátano" de la lista
+
+        // Mostrar la lista actualizada
+        System.out.println("Lista actualizada: " + frutas);
+    }
+}
+```
+
+---
+
+## 10.3 Conjuntos (`HashSet`, `TreeSet`)
+
+Los conjuntos (`Set`) almacenan elementos únicos y no permiten duplicados. Ejemplos comunes incluyen `HashSet` y `TreeSet`.
+
+### `HashSet`
+
+```java
+import java.util.HashSet;
+
+public class EjemploHashSet {
+    public static void main(String[] args) {
+        HashSet<String> ciudades = new HashSet<>();
+
+        // Añadir elementos
+        ciudades.add("Madrid");
+        ciudades.add("Barcelona");
+        ciudades.add("Sevilla");
+        ciudades.add("Madrid"); // No se añadirá porque ya existe
+
+        // Mostrar elementos
+        System.out.println("Ciudades: " + ciudades); // Los elementos no tienen un orden específico
+    }
+}
+```
+
+### `TreeSet`
+
+```java
+import java.util.TreeSet;
+
+public class EjemploTreeSet {
+    public static void main(String[] args) {
+        TreeSet<Integer> numeros = new TreeSet<>();
+
+        // Añadir elementos
+        numeros.add(5);
+        numeros.add(2);
+        numeros.add(8);
+        numeros.add(1);
+
+        // Mostrar elementos ordenados
+        System.out.println("Números ordenados: " + numeros);
+    }
+}
+```
+
+---
+
+## 10.4 Mapas (`HashMap`, `TreeMap`)
+
+Los mapas (`Map`) almacenan pares clave-valor, donde cada clave debe ser única.
+
+### `HashMap`
+
+```java
+import java.util.HashMap;
+
+public class EjemploHashMap {
+    public static void main(String[] args) {
+        HashMap<String, Integer> edades = new HashMap<>();
+
+        // Añadir pares clave-valor
+        edades.put("Juan", 25);
+        edades.put("Ana", 30);
+        edades.put("Luis", 28);
+
+        // Acceder a un valor por su clave
+        System.out.println("Edad de Ana: " + edades.get("Ana")); // Muestra 30
+
+        // Recorrer el mapa
+        for (String clave : edades.keySet()) {
+            System.out.println(clave + " tiene " + edades.get(clave) + " años.");
+        }
+    }
+}
+```
+
+### `TreeMap`
+
+```java
+import java.util.TreeMap;
+
+public class EjemploTreeMap {
+    public static void main(String[] args) {
+        TreeMap<String, String> capitales = new TreeMap<>();
+
+        // Añadir pares clave-valor
+        capitales.put("España", "Madrid");
+        capitales.put("Francia", "París");
+        capitales.put("Alemania", "Berlín");
+
+        // Mostrar las capitales ordenadas por país
+        for (String pais : capitales.keySet()) {
+            System.out.println("La capital de " + pais + " es " + capitales.get(pais));
+        }
+    }
+}
+```
+
+---
+
+## 10.5 Iteradores
+
+Los iteradores permiten recorrer colecciones de manera eficiente. Se pueden usar con cualquier colección que implemente la interfaz `Iterable`.
+
+```java
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class EjemploIterador {
+    public static void main(String[] args) {
+        ArrayList<String> nombres = new ArrayList<>();
+
+        // Añadir elementos
+        nombres.add("Laura");
+        nombres.add("Pedro");
+        nombres.add("Marta");
+
+        // Crear un iterador
+        Iterator<String> iterador = nombres.iterator();
+
+        // Recorrer la lista con el iterador
+        while (iterador.hasNext()) {
+            String nombre = iterador.next(); // Obtiene el siguiente elemento
+            System.out.println("Nombre: " + nombre);
+
+            // Eliminar un elemento específico
+            if (nombre.equals("Pedro")) {
+                iterador.remove(); // Elimina "Pedro" de la lista
+            }
+        }
+
+        // Mostrar lista actualizada
+        System.out.println("Lista actualizada: " + nombres);
+    }
+}
+```
+
+---
+
+---
+
+---
+
+# 11. Entrada y Salida de Datos en Java ⬅️➡️
+
+En este capítulo, exploraremos cómo manejar la entrada y salida de datos en Java. Aprenderemos a leer datos desde la consola, escribir datos en la consola y trabajar con archivos para leer y escribir información.
+
+---
+
+## 11.1 Lectura de datos desde la consola (`Scanner`)
+
+La clase `Scanner` es muy útil para leer datos ingresados por el usuario desde la consola.
+
+```java
+import java.util.Scanner;
+
+public class LecturaConsola {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Crear un objeto Scanner
+
+        // Leer un dato de tipo String
+        System.out.print("Ingresa tu nombre: ");
+        String nombre = scanner.nextLine(); // nextLine() lee toda la línea
+
+        // Leer un dato de tipo int
+        System.out.print("Ingresa tu edad: ");
+        int edad = scanner.nextInt(); // nextInt() lee un entero
+
+        // Mostrar los datos ingresados
+        System.out.println("Hola, " + nombre + ", tienes " + edad + " años.");
+
+        scanner.close(); // Cerrar el objeto Scanner
+    }
+}
+```
+**Explicación:**
+- El método `nextLine()` lee una línea completa de texto.
+- El método `nextInt()` lee un número entero.
+- Es importante cerrar el objeto `Scanner` con `scanner.close()` para liberar recursos.
+
+---
+
+## 11.2 Escritura de datos en la consola
+
+Para mostrar datos en la consola, usamos métodos como `System.out.print()` y `System.out.println()`.
+
+```java
+public class EscrituraConsola {
+    public static void main(String[] args) {
+        // Escribir texto sin salto de línea
+        System.out.print("Hola, ");
+        System.out.print("mundo. ");
+
+        // Escribir texto con salto de línea
+        System.out.println("Esto es una nueva línea.");
+
+        // Formatear la salida
+        System.out.printf("El número %.2f tiene dos decimales.\n", 3.14159);
+    }
+}
+```
+**Explicación:**
+- `System.out.print()` no agrega un salto de línea al final.
+- `System.out.println()` agrega un salto de línea después de imprimir.
+- `System.out.printf()` permite formatear cadenas con especificadores como `%.2f` para números decimales.
+
+---
+
+## 11.3 Archivos (lectura/escritura con `File`, `FileReader`, `BufferedReader`, `FileWriter`)
+
+### Lectura de archivos
+Usamos `File` y `BufferedReader` para leer archivos.
+
+```java
+import java.io.*;
+
+public class LecturaArchivo {
+    public static void main(String[] args) {
+        try {
+            File archivo = new File("ejemplo.txt"); // Crear objeto File
+            BufferedReader br = new BufferedReader(new FileReader(archivo)); // Crear BufferedReader
+
+            String linea;
+            while ((linea = br.readLine()) != null) { // Leer línea por línea
+                System.out.println(linea); // Imprimir cada línea
+            }
+
+            br.close(); // Cerrar el BufferedReader
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
+}
+```
+**Explicación:**
+- `File` representa el archivo físico.
+- `BufferedReader` mejora el rendimiento al leer grandes cantidades de texto.
+- `readLine()` devuelve cada línea como un `String`.
+
+### Escritura de archivos
+Usamos `FileWriter` para escribir datos en un archivo.
+
+```java
+import java.io.*;
+
+public class EscrituraArchivo {
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("ejemplo.txt"); // Crear FileWriter
+
+            fw.write("Hola, este es un archivo de ejemplo.\n"); // Escribir texto
+            fw.write("Segunda línea del archivo.\n");
+
+            fw.close(); // Cerrar el FileWriter
+            System.out.println("Archivo escrito correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo: " + e.getMessage());
+        }
+    }
+}
+```
+**Explicación:**
+- `FileWriter` permite escribir datos en un archivo de texto.
+- El método `write()` agrega contenido al archivo.
+- Es importante cerrar el `FileWriter` para asegurar que los datos se guarden correctamente.
+
+---
+
+---
+
+---
+
+# 12. Programación Orientada a Objetos (POO) Avanzada 🧠
+
+En este capítulo exploraremos conceptos avanzados de la Programación Orientada a Objetos (POO) en Java. Estos conceptos permiten estructurar y gestionar mejor el código, haciéndolo más eficiente y mantenible.
+
+---
+
+## 12.1 Composición vs. Herencia
+
+### Composición
+La composición implica que una clase tenga una instancia de otra clase como atributo. Esto se utiliza para establecer una relación "tiene un/a".
+
+```java
+class Motor {
+    void arrancar() {
+        System.out.println("El motor está arrancando...");
+    }
+}
+
+class Coche {
+    private Motor motor; // Composición: Coche "tiene un" Motor
+
+    Coche() {
+        this.motor = new Motor(); // Inicializamos el motor
+    }
+
+    void conducir() {
+        motor.arrancar(); // Llamamos a métodos del motor
+        System.out.println("El coche está en movimiento.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Coche coche = new Coche();
+        coche.conducir();
+    }
+}
+```
+**Salida:**
+```
+El motor está arrancando...
+El coche está en movimiento.
+```
+
+### Herencia
+La herencia establece una relación "es un/a" entre clases. Utilizamos la palabra clave `extends` para crear clases hijas que heredan de una clase padre.
+
+```java
+class Animal {
+    void comer() {
+        System.out.println("El animal está comiendo.");
+    }
+}
+
+class Perro extends Animal {
+    void ladrar() {
+        System.out.println("Guau guau");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Perro perro = new Perro();
+        perro.comer(); // Método heredado de Animal
+        perro.ladrar(); // Método propio de Perro
+    }
+}
+```
+**Salida:**
+```
+El animal está comiendo.
+Guau guau
+```
+
+---
+
+## 12.2 Clases Internas y Anónimas
+
+### Clases Internas
+Las clases internas son definidas dentro de otra clase y tienen acceso a los miembros de la clase externa.
+
+```java
+class Externa {
+    private String mensaje = "Hola desde la clase externa";
+
+    class Interna {
+        void mostrarMensaje() {
+            System.out.println(mensaje); // Accede a miembros de la clase externa
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Externa externa = new Externa();
+        Externa.Interna interna = externa.new Interna();
+        interna.mostrarMensaje();
+    }
+}
+```
+**Salida:**
+```
+Hola desde la clase externa
+```
+
+### Clases Anónimas
+Las clases anónimas son clases sin nombre que se utilizan principalmente para implementar interfaces o sobrescribir métodos de clases existentes.
+
+```java
+interface Saludo {
+    void saludar();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Saludo saludo = new Saludo() { // Clase anónima implementando la interfaz
+            @Override
+            public void saludar() {
+                System.out.println("Hola desde una clase anónima");
+            }
+        };
+        saludo.saludar();
+    }
+}
+```
+**Salida:**
+```
+Hola desde una clase anónima
+```
+
+---
+
+## 12.3 Uso de `final` en Clases, Métodos y Variables
+
+### `final` en Variables
+Las variables declaradas como `final` no pueden cambiar su valor después de ser inicializadas.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        final int constante = 10;
+        System.out.println("Constante: " + constante);
+        // constante = 20; // Error: no se puede reasignar una variable final
+    }
+}
+```
+
+### `final` en Métodos
+Un método marcado como `final` no puede ser sobrescrito por clases hijas.
+
+```java
+class Animal {
+    final void dormir() {
+        System.out.println("El animal está durmiendo.");
+    }
+}
+
+class Perro extends Animal {
+    // void dormir() {} // Error: no se puede sobrescribir un método final
+}
+```
+
+### `final` en Clases
+Una clase marcada como `final` no puede tener subclases.
+
+```java
+final class Animal {
+    void comer() {
+        System.out.println("El animal está comiendo.");
+    }
+}
+
+// class Perro extends Animal {} // Error: no se puede heredar de una clase final
+```
+
+---
+
+## 12.4 Clases y Métodos Estáticos
+
+### Métodos Estáticos
+Los métodos estáticos pertenecen a la clase en lugar de a una instancia específica. Se acceden directamente a través del nombre de la clase.
+
+```java
+class Utilidades {
+    static int sumar(int a, int b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int resultado = Utilidades.sumar(5, 3); // Llamada al método estático
+        System.out.println("Resultado: " + resultado);
+    }
+}
+```
+**Salida:**
+```
+Resultado: 8
+```
+
+### Clases Estáticas
+Las clases estáticas anidadas pueden ser accedidas sin crear una instancia de la clase externa.
+
+```java
+class Externa {
+    static class Anidada {
+        void mostrarMensaje() {
+            System.out.println("Hola desde una clase estática anidada");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Externa.Anidada anidada = new Externa.Anidada(); // Creación de la clase estática anidada
+        anidada.mostrarMensaje();
+    }
+}
+```
+**Salida:**
+```
+Hola desde una clase estática anidada
+```
+
+---
+
+---
+
+---
+
+# 13. Hilos y Concurrencia ⚡
+
+La programación concurrente en Java permite realizar múltiples tareas al mismo tiempo utilizando hilos. Aquí exploraremos conceptos clave como crear hilos, sincronización y el uso de `ExecutorService` para gestionar tareas.
+
+---
+
+## 13.1 Introducción a los Hilos
+
+Un hilo es la unidad más pequeña de ejecución dentro de un programa. Java proporciona soporte para trabajar con hilos a través de la clase `Thread` y la interfaz `Runnable`.
+
+---
+
+## 13.2 Crear Hilos con `Thread` y `Runnable`
+
+### Usando la clase `Thread`
+
+```java
+class MiHilo extends Thread {
+    @Override
+    public void run() {
+        // Código que se ejecuta cuando el hilo se inicia
+        System.out.println("Hilo iniciado: " + Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MiHilo hilo1 = new MiHilo();
+        MiHilo hilo2 = new MiHilo();
+
+        hilo1.start(); // Inicia el hilo1
+        hilo2.start(); // Inicia el hilo2
+    }
+}
+```
+
+**Explicación:**
+- `MiHilo` extiende la clase `Thread` y sobrescribe el método `run`.
+- `start()` inicia el hilo, ejecutando el método `run` en un hilo separado.
+
+### Usando la interfaz `Runnable`
+
+```java
+class MiRunnable implements Runnable {
+    @Override
+    public void run() {
+        // Código que se ejecuta en el hilo
+        System.out.println("Hilo en ejecución: " + Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread hilo1 = new Thread(new MiRunnable());
+        Thread hilo2 = new Thread(new MiRunnable());
+
+        hilo1.start(); // Inicia el hilo1
+        hilo2.start(); // Inicia el hilo2
+    }
+}
+```
+
+**Explicación:**
+- Implementar `Runnable` es preferido cuando ya estamos extendiendo otra clase.
+- Los hilos se crean pasando una instancia de `Runnable` al constructor de `Thread`.
+
+---
+
+## 13.3 Sincronización de Hilos
+
+Cuando varios hilos acceden a un recurso compartido, puede haber problemas de consistencia. Java proporciona la palabra clave `synchronized` para evitar estos problemas.
+
+### Ejemplo: Sincronizar un Método
+
+```java
+class Contador {
+    private int cuenta = 0;
+
+    public synchronized void incrementar() {
+        cuenta++;
+        System.out.println(Thread.currentThread().getName() + " incrementa a: " + cuenta);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Contador contador = new Contador();
+
+        Runnable tarea = () -> {
+            for (int i = 0; i < 5; i++) {
+                contador.incrementar();
+            }
+        };
+
+        Thread hilo1 = new Thread(tarea);
+        Thread hilo2 = new Thread(tarea);
+
+        hilo1.start();
+        hilo2.start();
+    }
+}
+```
+
+**Explicación:**
+- El método `incrementar` está sincronizado, lo que garantiza que solo un hilo pueda ejecutarlo a la vez.
+- Esto previene condiciones de carrera al modificar la variable `cuenta`.
+
+### Ejemplo: Bloque Synchronized
+
+```java
+class Banco {
+    private int saldo = 100;
+
+    public void retirar(int cantidad) {
+        synchronized (this) {
+            if (saldo >= cantidad) {
+                System.out.println(Thread.currentThread().getName() + " retira: " + cantidad);
+                saldo -= cantidad;
+                System.out.println("Saldo restante: " + saldo);
+            } else {
+                System.out.println(Thread.currentThread().getName() + " no puede retirar: Saldo insuficiente");
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Banco banco = new Banco();
+
+        Runnable tarea = () -> banco.retirar(50);
+
+        Thread hilo1 = new Thread(tarea);
+        Thread hilo2 = new Thread(tarea);
+
+        hilo1.start();
+        hilo2.start();
+    }
+}
+```
+
+**Explicación:**
+- `synchronized (this)` sincroniza solo el bloque crítico, mejorando el rendimiento.
+
+---
+
+## 13.4 Uso de `ExecutorService`
+
+`ExecutorService` es una API de alto nivel para gestionar hilos. Permite ejecutar tareas de manera concurrente sin necesidad de manejar manualmente los hilos.
+
+### Ejemplo Básico
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Main {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(3); // Crea un pool de 3 hilos
+
+        Runnable tarea = () -> {
+            System.out.println("Ejecutando tarea en: " + Thread.currentThread().getName());
+        };
+
+        for (int i = 0; i < 5; i++) {
+            executor.execute(tarea); // Encola la tarea para que se ejecute
+        }
+
+        executor.shutdown(); // Finaliza el ExecutorService
+    }
+}
+```
+
+**Explicación:**
+- `newFixedThreadPool(3)` crea un grupo de 3 hilos reutilizables.
+- `execute` asigna tareas al grupo de hilos.
+- `shutdown` asegura que no se acepten más tareas y los hilos se liberen tras finalizar las actuales.
+
+### Ejemplo con `Callable` y `Future`
+
+```java
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class Main {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newSingleThreadExecutor(); // Un solo hilo
+
+        Callable<String> tarea = () -> {
+            Thread.sleep(1000); // Simula una tarea costosa
+            return "Resultado de la tarea";
+        };
+
+        Future<String> futuro = executor.submit(tarea); // Encola la tarea
+
+        try {
+            System.out.println("Esperando resultado...");
+            String resultado = futuro.get(); // Bloquea hasta que se complete la tarea
+            System.out.println("Resultado: " + resultado);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            executor.shutdown();
+        }
+    }
+}
+```
+
+**Explicación:**
+- `Callable` permite tareas que devuelven un resultado.
+- `Future` se usa para obtener el resultado de la tarea o manejar excepciones.
+
+---
+
+Con estos ejemplos, puedes empezar a trabajar con hilos y concurrencia en Java de manera eficiente. 🚀
+
+---
+
+---
+
+---
+
+# 14. API de Java y Bibliotecas Comunes 📚
+
+En este capítulo, exploraremos algunas de las bibliotecas más comunes y útiles que proporciona Java para manipular cadenas, fechas, colecciones y más. También veremos ejemplos prácticos para entender cómo utilizar estas herramientas.
+
+---
+
+## 14.1 Biblioteca estándar de Java
+
+La biblioteca estándar de Java incluye un conjunto de paquetes y clases predefinidos que simplifican el desarrollo de software. Estos incluyen herramientas para colecciones, fechas, manipulación de cadenas, entrada/salida, concurrencia y más.
+
+- **Paquetes clave:**
+  - `java.util` → Utilidades generales.
+  - `java.time` → Manejo de fechas y tiempos.
+  - `java.io` → Entrada y salida de datos.
+
+---
+
+## 14.2 Uso de `java.util` y `java.time`
+
+### Ejemplo: Generar números aleatorios con `java.util.Random`
+
+```java
+import java.util.Random;
+
+public class GenerarAleatorios {
+    public static void main(String[] args) {
+        Random random = new Random();
+
+        // Generar un número aleatorio entre 0 y 9
+        int numero = random.nextInt(10);
+        System.out.println("Número aleatorio: " + numero); // Imprime un número aleatorio
+    }
+}
+```
+
+### Ejemplo: Manejar fechas con `java.time.LocalDate` y `java.time.LocalDateTime`
+
+```java
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ManejoDeFechas {
+    public static void main(String[] args) {
+        // Fecha actual
+        LocalDate fechaActual = LocalDate.now();
+        System.out.println("Fecha actual: " + fechaActual); // Imprime la fecha actual
+
+        // Fecha y hora actual
+        LocalDateTime fechaHoraActual = LocalDateTime.now();
+        System.out.println("Fecha y hora actual: " + fechaHoraActual); // Imprime fecha y hora
+
+        // Formatear la fecha y hora
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String fechaFormateada = fechaHoraActual.format(formatter);
+        System.out.println("Fecha formateada: " + fechaFormateada); // Imprime la fecha formateada
+    }
+}
+```
+
+---
+
+## 14.3 Operaciones con cadenas y fechas
+
+### Ejemplo: Métodos comunes de la clase `String`
+
+```java
+public class OperacionesConCadenas {
+    public static void main(String[] args) {
+        String texto = "Aprendiendo Java";
+
+        // Longitud de la cadena
+        System.out.println("Longitud: " + texto.length()); // Muestra la longitud del texto
+
+        // Convertir a mayúsculas
+        System.out.println("Mayúsculas: " + texto.toUpperCase()); // Convierte el texto a mayúsculas
+
+        // Reemplazar caracteres
+        System.out.println("Reemplazo: " + texto.replace("Java", "programación")); // Reemplaza "Java" con "programación"
+    }
+}
+```
+
+### Ejemplo: Calcular la diferencia entre dos fechas
+
+```java
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class DiferenciaEntreFechas {
+    public static void main(String[] args) {
+        LocalDate inicio = LocalDate.of(2023, 1, 1);
+        LocalDate fin = LocalDate.of(2025, 1, 1);
+
+        // Calcular la diferencia en días
+        long dias = ChronoUnit.DAYS.between(inicio, fin);
+        System.out.println("Días entre las fechas: " + dias); // Imprime la diferencia en días
+    }
+}
+```
+
+---
+
+## 14.4 Clases utilitarias (`Collections`, `Arrays`)
+
+### Ejemplo: Ordenar una lista con `Collections`
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class OrdenarLista {
+    public static void main(String[] args) {
+        List<String> nombres = new ArrayList<>();
+        nombres.add("Carlos");
+        nombres.add("Ana");
+        nombres.add("Beatriz");
+
+        // Ordenar la lista
+        Collections.sort(nombres);
+        System.out.println("Lista ordenada: " + nombres); // Imprime la lista en orden alfabético
+    }
+}
+```
+
+### Ejemplo: Copiar y rellenar un array con `Arrays`
+
+```java
+import java.util.Arrays;
+
+public class OperacionesConArrays {
+    public static void main(String[] args) {
+        int[] numeros = {1, 2, 3, 4, 5};
+
+        // Copiar el array
+        int[] copia = Arrays.copyOf(numeros, numeros.length);
+        System.out.println("Copia del array: " + Arrays.toString(copia)); // Muestra la copia
+
+        // Rellenar el array con un valor
+        Arrays.fill(numeros, 0);
+        System.out.println("Array rellenado: " + Arrays.toString(numeros)); // Muestra el array relleno con ceros
+    }
+}
+```
+
+---
+
+---
+
+---
