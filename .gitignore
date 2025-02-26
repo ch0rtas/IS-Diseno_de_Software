@@ -54,3 +54,5 @@ out/
 *.gdb
 
 *.iml
+/.metadata/
+/.idea/
