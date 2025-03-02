@@ -5,3 +5,4 @@ public interface DoctorStrategy {
     void enviarFactura();
     void enviarResultados();
 }
+
