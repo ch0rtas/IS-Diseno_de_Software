@@ -85,7 +85,8 @@ La solución se estructura en tres componentes principales:
   - `inspectChildren()`
   - `sendResultsInspection()`
   - `sendInvoice()`  
-    _Ejemplo de la interfaz (archivo: `DoctorServiceStrategy.java`):_
+
+   _Ejemplo de la interfaz (archivo: `DoctorServiceStrategy.java`):_
   ```java
   public interface DoctorServiceStrategy extends ServiceStrategy {
       public void inspectChildren();
