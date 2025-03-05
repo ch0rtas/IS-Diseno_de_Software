@@ -30,22 +30,14 @@ El ejercicio consiste en implementar una solución basada en el **Patrón Strate
     <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.png" alt="Diagrama UML" width="600"/>
   </a>
 </p>
-
-El diagrama UML muestra cómo se desacoplan las estrategias médicas mediante una interfaz común, permitiendo cambiar el comportamiento en tiempo de ejecución.
-
----
-
-## 🌟 Diagrama UML de la Solución
+<p align="center"><i>Figura 1: Diagrama UML generado por IntelliJ.</i></p>
 
 <p align="center">
-  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.png">
-    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.png" alt="Diagrama UML" width="600"/>
-  </a>
-</p> <p align="center">
   <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.drawio">
     <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.drawio.png" alt="Diagrama UML en formato Drawio" width="600"/>
   </a>
 </p>
+<p align="center"><i>Figura 2: Diagrama UML generado en formato Draw.io.</i></p>
 
 El diagrama UML muestra cómo se desacoplan las estrategias médicas mediante una interfaz común, permitiendo cambiar el comportamiento en tiempo de ejecución.
 
