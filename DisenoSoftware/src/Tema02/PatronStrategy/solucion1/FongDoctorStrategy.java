@@ -1,5 +1,14 @@
 package Tema02.PatronStrategy.solucion1;
 
+/**
+ * Patrón Strategy (Tema 02) - Ejercicio Guardería
+ *
+ * @author Manuel Martínez Ramón
+ * @date 2025.02.15
+ * @course INSO 2 - Diseño de Software
+ */
+
+
 public class FongDoctorStrategy implements DoctorServiceStrategy {
     public void inspectChildren() {
         System.out.println(this + ", estoy inspeccionando al niño.");

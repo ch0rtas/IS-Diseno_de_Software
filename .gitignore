@@ -56,3 +56,6 @@ out/
 *.iml
 /.metadata/
 /.idea/
+*.classpath
+*.project
+/bin/

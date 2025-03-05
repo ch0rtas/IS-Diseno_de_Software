@@ -1,5 +1,14 @@
 package Tema02.PatronStrategy.solucion2;
 
+/**
+ * Patrón Strategy (Tema 02) - Ejercicio Guardería
+ *
+ * @author Manuel Martínez Ramón
+ * @date 2025.02.15
+ * @course INSO 2 - Diseño de Software
+ */
+
+
 import Tema02.PatronStrategy.solucion1.FongDoctorStrategy;
 import Tema02.PatronStrategy.solucion1.WangDoctorStrategy;
 
