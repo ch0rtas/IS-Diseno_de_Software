@@ -31,7 +31,7 @@ El objetivo del ejercicio es aplicar el **Patrón Strategy** para alternar entre
   </a>
 </p>
 
-Este diagrama UML muestra cómo el **contexto** (KinderGardenActivityContext) controla el orden de ejecución de las actividades y delega cada tarea a la estrategia médica que se ha inyectado.
+Este diagrama UML muestra cómo el **contexto** (`KinderGardenActivityContext`) controla el orden de ejecución de las actividades y delega cada tarea a la estrategia médica que se ha inyectado.
 
 ---
 
@@ -48,14 +48,56 @@ Esta solución se diferencia de la **Solución 1** en que el **contexto** determ
     2. `sendResultsInspection()`
     3. `sendInvoice()`
 
-[Ver código de KinderGardenActivityContext.java](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/KinderGardenActivityContext.java)
+_Archivo: `KinderGardenActivityContext.java`_
+```java
+public class KinderGardenActivityContext implements DoctorServiceStrategy {
+    private DoctorServiceStrategy doctorServiceStrategy;
+
+    public KinderGardenActivityContext(DoctorServiceStrategy doctorServiceStrategy) {
+        super();
+        this.doctorServiceStrategy = doctorServiceStrategy;
+    }
+
+    public DoctorServiceStrategy getDoctorServiceStrategy() {
+        return this.doctorServiceStrategy;
+    }
+
+    public void setDoctorServiceStrategy(DoctorServiceStrategy doctorServiceStrategy) {
+        this.doctorServiceStrategy = doctorServiceStrategy;
+    }
+
+    public void applyServiceStrategy() {
+        // El contexto marca el orden de ejecución de las actividades
+        // Actividad 1
+        this.inspectChildren();
+        // Actividad 2
+        this.sendResultsInspection();
+        // Actividad 3
+        this.sendInvoice();
+    }
+
+    public void inspectChildren() {
+        this.doctorServiceStrategy.inspectChildren();
+    }
+
+    public void sendResultsInspection() {
+        this.doctorServiceStrategy.sendResultsInspection();
+    }
+
+    public void sendInvoice() {
+        this.doctorServiceStrategy.sendInvoice();
+    }
+}
+```
+
+[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/KinderGardenActivityContext.java)
 
 ### 2. **Clases Concretas de Estrategia**
 
-Aunque las clases concretas (`FongDoctorStrategy` y `WangDoctorStrategy`) se implementan en la **Solución 1**, se reutilizan en esta solución para definir el comportamiento de cada actividad médica (la forma en que se inspeccionan los niños, se envían resultados y se emite la factura).
+Se reutilizan las estrategias definidas en la **Solución 1**:
 
 - **`FongDoctorStrategy`** y **`WangDoctorStrategy`**:  
-  Estas clases proporcionan la implementación específica para cada doctor, pero ya **no** definen el orden de ejecución en su método `applyServiceStrategy()`. En cambio, su funcionalidad se invoca desde el contexto.
+  Estas clases proporcionan la implementación específica para cada doctor. La diferencia con la Solución 1 es que su método `applyServiceStrategy()` no define el orden de ejecución, ya que éste es controlado por el contexto.
 
 [Ver código de FongDoctorStrategy.java](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/FongDoctorStrategy.java)  
 [Ver código de WangDoctorStrategy.java](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/WangDoctorStrategy.java)
@@ -66,9 +108,36 @@ La clase `TestKinderGardenService` demuestra el funcionamiento del contexto:
 
 - **Inicio:** Se configura inicialmente el contexto con la estrategia del Dr. Fong.
 - **Cambio Dinámico:** Posteriormente, se cambia la estrategia a la del Dr. Wang utilizando el método `setDoctorServiceStrategy()`.
-- **Ejecuta las Actividades:** En ambos casos, el contexto ejecuta las actividades en el orden predefinido.
+- **Ejecución de Actividades:** En ambos casos, el contexto ejecuta las actividades en el orden predefinido.
 
-[Ver código de TestKinderGardenService.java](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/TestKinderGardenService.java)
+_Archivo: `TestKinderGardenService.java`_
+```java
+public class TestKinderGardenService {
+    public static void main(String[] args) {
+        System.out.println("========================================");
+        System.out.println("   Bienvenido al KinderGarden Service");
+        System.out.println("========================================");
+
+        // Suponemos que pasa consulta el Dr. Fong
+        System.out.println(">> Servicio médico en curso: Dr. Fong <<");
+        KinderGardenActivityContext kinderGardenContext = new KinderGardenActivityContext(new FongDoctorStrategy());
+        kinderGardenContext.applyServiceStrategy();
+        System.out.println("-------------------------------------");
+
+        // Cambiamos el servicio médico, ahora pasa consulta el Dr. Wang
+        System.out.println(">> Cambiando al servicio médico: Dr. Wang <<");
+        kinderGardenContext.setDoctorServiceStrategy(new WangDoctorStrategy());
+        kinderGardenContext.applyServiceStrategy();
+        System.out.println("-------------------------------------");
+
+        System.out.println("========================================");
+        System.out.println("     Fin del servicio KinderGarden");
+        System.out.println("========================================");
+    }
+}
+```
+
+[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/TestKinderGardenService.java)
 
 ---
 
@@ -82,6 +151,8 @@ Contiene los siguientes archivos:
 
 - `KinderGardenActivityContext.java`
 - `TestKinderGardenService.java`
+- `UML2.drawio`
+- `UML2.drawio.png`
 - `UML2.png`
 
 ---
@@ -121,7 +192,6 @@ Al ejecutar la clase `TestKinderGardenService`, se observa que:
      Fin del servicio KinderGarden
 ========================================
 ```
-[Ver código](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/KinderGardenActivityContext.java)
 
 ---
 
@@ -139,7 +209,7 @@ Se reutilizan las clases de estrategias (definidas en la **Solución 1**), lo qu
 ### 4. **Intercambio Dinámico**
 El contexto permite cambiar la estrategia en tiempo de ejecución, manteniendo un comportamiento predecible y ordenado.
 
-📁 [solucion1](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1)
+[Ver solución 1](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1)
 
 ---
 

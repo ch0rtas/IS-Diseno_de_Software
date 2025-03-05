@@ -1,7 +1,7 @@
 # Patrón Strategy (Tema 02) - Ejercicio Guardería
 
 <h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=Poppins&size=40&duration=4000&pause=1200&color=007CF0&center=true&vCenter=true&width=900&height=70&lines=Patr%C3%B3n+Strategy;Ejercicio+de+Dise%C3%B1o+de+Software" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Poppins&size=40&duration=4000&pause=1200&color=007CF0&center=true&vCenter=true&width=650&height=70&lines=Patr%C3%B3n+Strategy;Ejercicio+de+Dise%C3%B1o+de+Software" />
 </h1>
 
 <div align="center">
@@ -70,12 +70,12 @@ En esta solución, la interfaz común tiene tres métodos específicos (`inspect
 
 ## 💡 Diferencias entre Soluciones
 
-| Aspecto                          | **Solución 1**                              | **Solución 2**                              |
-|-----------------------------------|---------------------------------------------|---------------------------------------------|
-| **Orden de Ejecución**            | Definido por cada estrategia.               | Controlado por el contexto.                 |
-| **Interfaz Común**                | Método único (`applyServiceStrategy()`).    | Tres métodos (`inspectChildren()`, etc.).   |
-| **Flexibilidad**                  | Estrategias tienen libertad de implementación. | Contexto dicta un orden consistente.        |
-| **Control del Contexto**          | Menor control.                              | Mayor control.                              |
+| Aspecto                          | **Solución 1**                              | **Solución 2**                                                    |
+|-----------------------------------|---------------------------------------------|-------------------------------------------------------------------|
+| **Orden de Ejecución**            | Definido por cada estrategia.               | Controlado por el contexto.                                       |
+| **Interfaz Común**                | Método único (`applyServiceStrategy()`).    | Tres métodos (`inspectChildren()`, `sendResultsInspection()` y `sendInvoice`). |
+| **Flexibilidad**                  | Estrategias tienen libertad de implementación. | Contexto dicta un orden consistente.                              |
+| **Control del Contexto**          | Menor control.                              | Mayor control.                                                    |
 
 Ambas soluciones son válidas, y la elección depende de los requisitos específicos del problema, como la necesidad de flexibilidad frente al control del flujo.
 
