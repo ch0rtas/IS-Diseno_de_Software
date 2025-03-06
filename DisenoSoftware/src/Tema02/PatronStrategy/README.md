@@ -79,6 +79,16 @@ En esta solución, cada estrategia concreta implementa un único método (`apply
 - **Código Fuente y UML**:
   [Solución 1](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1)
 
+> [!TIP]  
+> **Beneficios Clave (Patrón Strategy):**  
+> - Desacoplamiento: Separar el comportamiento de la lógica del contexto.
+> - Flexibilidad: Cambiar la estrategia en tiempo real.
+> - Reusabilidad y Extensibilidad: Facilitar la incorporación de nuevas estrategias sin modificar la estructura base.
+
+> [!IMPORTANT]  
+> **Punto Clave:**  
+> El contexto desacopla la estrategia de su ejecución, permitiendo inyectar diferentes comportamientos en tiempo de ejecución. Esta flexibilidad es esencial para la extensibilidad y el mantenimiento del sistema.
+
 ---
 
 ### **Solución 2**: Orden Controlado por el Contexto
@@ -95,6 +105,10 @@ En esta solución, la interfaz común tiene tres métodos específicos (`inspect
 
 - **Código Fuente y UML**:
   [Solución 2](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2)
+
+> [!NOTE]  
+> **Recomendación para Pruebas:**  
+> Ejecuta la clase `TestKinderGardenService` para observar cómo se alternan las estrategias en tiempo real. Esto ilustra claramente el beneficio del patrón Strategy en aplicaciones con comportamientos variables.
 
 ---
 

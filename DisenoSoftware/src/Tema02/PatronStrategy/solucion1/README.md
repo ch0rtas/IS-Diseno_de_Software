@@ -11,12 +11,6 @@
 
 ---
 
-> [!NOTE]
-> **Contexto del Ejercicio:**  
-> Este README describe la implementación del Patrón Strategy aplicada al servicio médico de un jardín de infancia, donde se alternan estrategias según el doctor encargado. Se recomienda leer cada sección para comprender la estructura y ventajas de esta solución.
-
----
-
 ## 📄 Enunciado del Ejercicio
 
 <p align="center">

@@ -23,7 +23,13 @@ El objetivo del ejercicio es aplicar el **Patrón Strategy** para alternar entre
 
 ---
 
-## 📂 Estructura de la carpeta
+> [!TIP]
+> **Ventajas del Patrón Strategy:**  
+> Separar la lógica de las estrategias permite intercambiarlas fácilmente en tiempo de ejecución, mejorando la flexibilidad del diseño.
+
+---
+
+## 📁 Estructura de la carpeta
 
 ### 📁 Estructura de la carpeta `solucion2`:
 ```
@@ -56,6 +62,12 @@ El objetivo del ejercicio es aplicar el **Patrón Strategy** para alternar entre
 <p align="center"><i>Figura 2: Diagrama UML generado en formato Draw.io.</i></p>
 
 El diagrama UML muestra cómo se desacoplan las estrategias médicas mediante una interfaz común, permitiendo cambiar el comportamiento en tiempo de ejecución.
+
+---
+
+> [!NOTE]
+> **Reutilización de Código:**  
+> Las estrategias definidas en la Solución 1 se aprovechan sin modificaciones, lo que optimiza el esfuerzo de desarrollo.
 
 ---
 
@@ -162,6 +174,12 @@ public class TestKinderGardenService {
 ```
 
 [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/TestKinderGardenService.java)
+
+---
+
+> [!IMPORTANT]
+> **Cambio Dinámico de Estrategias:**  
+> Esta solución facilita la extensión a nuevas estrategias sin modificar el contexto, respetando el Principio Abierto/Cerrado (OCP).
 
 ---
 
