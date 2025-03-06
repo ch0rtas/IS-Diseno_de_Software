@@ -23,6 +23,12 @@ El ejercicio consiste en implementar una solución basada en el **Patrón Observ
 
 El mecanismo se basa en que, al llamar al método `returnBook()` de la clase `Library`, si el libro se encuentra en mal estado, se actualiza el observable (`BookAlarm`) y se notifica a todos los observadores suscritos.
 
+> [!TIP]  
+> **Beneficios del Patrón Observer:**  
+> - Desacoplamiento: Los observadores se mantienen informados de los cambios sin estar directamente vinculados.
+> - Escalabilidad: Fácil agregar nuevos observadores sin modificar el sujeto.
+> - Flexibilidad: Notificaciones en tiempo real cuando el estado cambia.
+
 ---
 
 ## 📂 Estructura de la carpeta
@@ -85,6 +91,10 @@ public interface PullPushObserver {
 [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/PullPushObserver.java)
 
 Esta interfaz garantiza que todos los observadores pueden manejar notificaciones mediante ambos protocolos.
+
+> [!IMPORTANT]  
+> **Punto Clave:**  
+> La interfaz `PullPushObserver` permite gestionar notificaciones tanto por el protocolo Push como Pull, proporcionando flexibilidad a los observadores para adaptarse a sus necesidades.
 
 #### **PullPushModelObservable**
 Define los métodos para la gestión de observadores: `attach()`, `detach()` y `notifyObservers()`.  
@@ -193,6 +203,10 @@ public class Library {
 
 Esta clase encapsula la lógica de negocio asociada a la devolución de libros.
 
+> [!NOTE]  
+> **Recomendación para Pruebas:**  
+> Ejecuta la clase `LibraryPullPushObserverTest` para observar cómo se alternan las estrategias en tiempo real. Esto ilustra claramente el beneficio del patrón Observer en aplicaciones con comportamientos variables.
+
 ---
 
 ### 3. Clases Concretas de Observadores
@@ -221,7 +235,13 @@ public class StockDepartmentObserver implements PullPushObserver {
 ```
 [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/StockDepartmentObserver.java)
 
-Utiliza preferentemente el protocolo push; si no se recibe el objeto, consulta el observable.
+> [!IMPORTANT]  
+> **Punto Clave:** 
+> Los observadores utilizan tanto el protocolo Push (cuando el observable envía el objeto directamente) como el protocolo Pull (cuando el observador consulta al observable para obtener el estado).
+
+> [!TIP]  
+> **Recomendación:**  
+> Utiliza preferentemente el protocolo Push para evitar consultas adicionales, pero en caso de no recibir el objeto, recurre al protocolo Pull para consultar el estado directamente desde el observable.
 
 #### **ComprasDepartmentObserver**
 Representa el departamento de Compras.  
@@ -244,7 +264,9 @@ public class ComprasDepartmentObserver implements PullPushObserver {
 ```
 [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/ComprasDepartmentObserver.java)
 
-Muestra mensajes específicos para el departamento de Compras al recibir la notificación.
+> [!NOTE]  
+> **Importante:**  
+> Los mensajes que se muestran en cada observador son específicos para su contexto, permitiendo a cada departamento recibir notificaciones detalladas sobre la devolución de libros en mal estado.
 
 #### **AdminDepartmentObserver**
 Representa el departamento de Administración.  
@@ -267,7 +289,9 @@ public class AdminDepartmentObserver implements PullPushObserver {
 ```
 [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/AdminDepartmentObserver.java)
 
-Se encarga de procesar la notificación comprobando el tipo de protocolo recibido.
+> [!IMPORTANT]  
+> **Punto Clave:**  
+> Cada observador debe ser capaz de procesar tanto las notificaciones recibidas por push como las obtenidas mediante pull, garantizando así que todos los departamentos estén siempre actualizados, independientemente del protocolo utilizado.
 
 ---
 
@@ -327,6 +351,10 @@ Al ejecutar la clase `LibraryPullPushObserverTest`, se podrán observar en la co
 
 1. La notificación inicial a todos los departamentos cuando se devuelve un libro en mal estado.
 2. La notificación subsecuente, tras desuscribir el departamento de Compras, donde solo los observadores restantes reciben la alerta.
+
+> [!NOTE]  
+> **Observación:**  
+> Este ejercicio demuestra cómo la solución permite gestionar las suscripciones y las notificaciones dinámicamente, asegurando que la lógica de negocio es flexible y escalable.
 
 ### Ejemplo de Salida:
 
