@@ -11,6 +11,12 @@
 
 ---
 
+> [!NOTE]
+> **Contexto del Ejercicio:**  
+> Este README describe la implementación del Patrón Strategy aplicada al servicio médico de un jardín de infancia, donde se alternan estrategias según el doctor encargado. Se recomienda leer cada sección para comprender la estructura y ventajas de esta solución.
+
+---
+
 ## 📄 Enunciado del Ejercicio
 
 <p align="center">
@@ -24,6 +30,10 @@ El ejercicio consiste en implementar una solución basada en el **Patrón Strate
 ---
 
 ## 📂 Estructura de la carpeta
+
+> [!TIP]
+> **Organización del Proyecto:**  
+> Mantener una estructura de carpetas clara facilita el mantenimiento y la extensibilidad del código. Revisa la siguiente organización para entender la distribución de los archivos.
 
 ### 📁 Estructura de la carpeta `solucion1`:
 ```
@@ -59,6 +69,10 @@ El ejercicio consiste en implementar una solución basada en el **Patrón Strate
 </p>
 <p align="center"><i>Figura 2: Diagrama UML generado en formato Draw.io.</i></p>
 
+> [!IMPORTANT]
+> **Clave del Diagrama:**  
+> El diagrama UML es fundamental para visualizar cómo se desacoplan las estrategias médicas a través de una interfaz común, permitiendo cambiar el comportamiento en tiempo de ejecución sin afectar la estructura global.
+
 El diagrama UML muestra cómo se desacoplan las estrategias médicas mediante una interfaz común, permitiendo cambiar el comportamiento en tiempo de ejecución.
 
 ---
@@ -79,14 +93,17 @@ La solución se estructura en tres componentes principales:
   ```
   [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/ServiceStrategy.java)
 
+  > [!NOTE]
+  > **Extensión de Interfaces:**  
+  > La interfaz `DoctorServiceStrategy` extiende `ServiceStrategy` añadiendo métodos específicos para actividades médicas, lo que permite definir un contrato más detallado para las estrategias.
 
 - **`DoctorServiceStrategy`**  
   Extiende `ServiceStrategy` e incluye métodos específicos para las actividades médicas:
   - `inspectChildren()`
   - `sendResultsInspection()`
-  - `sendInvoice()`  
+  - `sendInvoice()`
 
-   _Ejemplo de la interfaz (archivo: `DoctorServiceStrategy.java`):_
+  _Ejemplo de la interfaz (archivo: `DoctorServiceStrategy.java`):_
   ```java
   public interface DoctorServiceStrategy extends ServiceStrategy {
       public void inspectChildren();
@@ -137,6 +154,9 @@ Cada clase concreta implementa `DoctorServiceStrategy` y define la forma en la q
   ```
   [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/FongDoctorStrategy.java)
 
+  > [!TIP]
+  > **Personalización de Estrategias:**  
+  > Observa cómo el orden de los métodos en `applyServiceStrategy()` determina la secuencia de operaciones. Esto permite ajustar el flujo de ejecución según la necesidad del servicio.
 
 - **`WangDoctorStrategy`**  
   Estrategia específica del Dr. Wang. La diferencia está en el orden de ejecución (por ejemplo, el envío de la factura se realiza antes que el envío de resultados):
@@ -203,6 +223,10 @@ Cada clase concreta implementa `DoctorServiceStrategy` y define la forma en la q
   ```
   [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/NoDoctorServiceStrategy.java)
 
+> [!IMPORTANT]
+> **Nota sobre el Orden de Ejecución:**  
+> El orden en que se llaman los métodos dentro de `applyServiceStrategy()` puede afectar la lógica del negocio. Asegúrate de que este orden refleje correctamente los requerimientos del servicio.
+
 ---
 
 ### 3. **Contexto: `KinderGardenServiceContext`**
@@ -226,6 +250,10 @@ public class KinderGardenServiceContext implements ServiceStrategy {
 }
 ```
 [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/KinderGardenServiceContext.java)
+
+> [!IMPORTANT]
+> **Punto Clave:**  
+> El contexto desacopla la estrategia de su ejecución, permitiendo inyectar diferentes comportamientos en tiempo de ejecución. Esta flexibilidad es esencial para la extensibilidad y el mantenimiento del sistema.
 
 Este diseño permite:
 - **Desacoplar** el comportamiento (estrategias) del contexto.
@@ -263,6 +291,9 @@ public class TestKinderGardenService {
     }
 }
 ```
+  > [!NOTE]
+  > **Recomendación para Pruebas:**  
+  > Ejecuta la clase `TestKinderGardenService` para observar cómo se alternan las estrategias en tiempo real. Esto ilustra claramente el beneficio del patrón Strategy en aplicaciones con comportamientos variables.
 
 ### Ejemplo de Salida:
 
@@ -292,6 +323,12 @@ public class TestKinderGardenService {
 ---
 
 ## 💡 Ventajas de la Solución
+
+> [!TIP]
+> **Beneficios Clave (Patrón Strategy):**  
+> - Desacoplamiento: Separar el comportamiento de la lógica del contexto.  
+> - Flexibilidad: Cambiar la estrategia en tiempo real.  
+> - Reusabilidad y Extensibilidad: Facilitar la incorporación de nuevas estrategias sin modificar la estructura base.
 
 - **Desacoplamiento:** Las estrategias médicas están separadas del contexto, lo que permite añadir nuevas sin modificar la lógica del servicio.
 - **Flexibilidad:** El contexto puede cambiar la estrategia en tiempo real, adaptándose a distintas necesidades.

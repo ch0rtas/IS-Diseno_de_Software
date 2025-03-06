@@ -121,26 +121,3 @@ Ambas soluciones son válidas, y la elección depende de los requisitos específ
   <a href="https://www.linkedin.com/in/manuel-mart%C3%ADnez-ram%C3%B3n-415711265/"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" /></a>
   <a href="mailto:manu08martinez@gmail.com"><img src="https://img.shields.io/badge/Email-%23D14836.svg?logo=gmail&logoColor=white" /></a>
 </p>
-
-
-# Mi Proyecto
-
-## Instalación
-
-> [!IMPORTANT]
-> Antes de comenzar, asegúrate de cumplir con los siguientes requisitos:
-> - Tener Python 3.8 o superior.
-> - Instalar las dependencias necesarias con `pip install -r requirements.txt`.
-
-> [!TIP]
-> Usa un entorno virtual para aislar las dependencias.
-
-> [!WARNING]
-> No ejecutes este script como administrador, ya que puede causar problemas con los permisos.
-
-> [!EXAMPLE]
-> Aquí tienes un ejemplo para ejecutar el script:
-> ```bash
-> python main.py --config config.json
-> ```
-
