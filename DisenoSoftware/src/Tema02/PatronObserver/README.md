@@ -1,7 +1,3 @@
-> [!IMPORTANT]  
-> El contenido de esta explicación no se corresponde a los códigos implementados.
-
-
 # Patrón Observer (Tema 02) - Solución Observer
 
 <h1 align="center">
@@ -47,9 +43,9 @@ La solución se encuentra en la carpeta `PatronObserver` con la siguiente estruc
    ├── 📄 BookState.java
    ├── 📄 ComprasDepartmentObserver.java
    ├── 📄 Library.java
-   ├── 📄 LibraryPullPushObserverTest.java
-   ├── 📄 PullPushModelObservable.java
-   ├── 📄 PullPushObserver.java
+   ├── 📄 LibraryObserverTest.java
+   ├── 📄 Observable.java
+   ├── 📄 Observer.java
    ├── 📄 StockDepartmentObserver.java
    ├── 📄 README.md
    ├── 📄 UML1.drawio
@@ -77,306 +73,233 @@ La solución se encuentra en la carpeta `PatronObserver` con la siguiente estruc
 
 ---
 
+
 ## 🛠️ Descripción de la Solución
 
-La implementación se estructura en cuatro bloques principales: interfaces básicas, clases del modelo y observable, observadores concretos y la clase de prueba.
-
-### 1. Interfaces Básicas
-
-#### **PullPushObserver**
-Define el método `update(PullPushModelObservable observable, Object arg)` que permite a cada observador recibir notificaciones.  
-_Ejemplo (PullPushObserver.java):_
-```java
-public interface PullPushObserver {
-    // 'observable': sujeto notificador; 'arg': variable de estado enviada (push).
-    void update(PullPushModelObservable observable, Object arg);
-}
-```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/PullPushObserver.java)
-
-Esta interfaz garantiza que todos los observadores pueden manejar notificaciones mediante ambos protocolos.
-
-> [!IMPORTANT]  
-> **Punto Clave:**  
-> La interfaz `PullPushObserver` permite gestionar notificaciones tanto por el protocolo Push como Pull, proporcionando flexibilidad a los observadores para adaptarse a sus necesidades.
-
-#### **PullPushModelObservable**
-Define los métodos para la gestión de observadores: `attach()`, `detach()` y `notifyObservers()`.  
-_Ejemplo (PullPushModelObservable.java):_
-```java
-public interface PullPushModelObservable {
-    void attach(PullPushObserver observer);
-    void detach(PullPushObserver observer);
-    void notifyObservers();
-}
-```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/PullPushModelObservable.java)
-
-Permite al observable gestionar dinámicamente su lista de observadores.
+La solución se estructura en bloques principales: enumeraciones, clases del modelo, interfaces de patrón Observer, clases observables y observadores concretos, y finalmente una clase de prueba para validar el funcionamiento.
 
 ---
 
-### 2. Clases del Modelo y del Observable
+### 1. Enumeraciones
+
+#### **BookState**
+Representa los posibles estados de un libro: `UNKNOWN`, `GOOD` y `BAD`.  
+_Ejemplo (BookState.java):_
+```java
+public enum BookState {
+    UNKNOWN, BAD, GOOD
+}
+```
+Esta enumeración sirve para clasificar los libros y activar notificaciones según su estado.
+
+---
+
+### 2. Clases del Modelo
 
 #### **Book**
-Representa la entidad libro, con atributos `title`, `author` y `bookState` (que indica si está en buen o mal estado).  
+Define los atributos básicos de un libro: título, autor y estado. También ofrece métodos para manipular y consultar estos atributos.  
 _Ejemplo (Book.java):_
 ```java
 public class Book {
     private String title;
     private String author;
     private BookState bookState;
-    
-    // Constructor, getters y método toString()
+
+    public Book(String title, String author, BookState bookState) {
+        this.title = title;
+        this.author = author;
+        this.bookState = bookState;
+    }
+
+    public BookState getBookState() {
+        return this.bookState;
+    }
+
+    @Override
+    public String toString() {
+        return "Book [title=" + this.title + ", author=" + this.author + ", bookState=" + this.bookState + "]";
+    }
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/Book.java)
+> [!NOTE]
+> **Punto Clave:**  
+> El atributo `bookState` es fundamental para determinar si un libro debe generar notificaciones.
 
-Esta clase encapsula la información que se necesita para evaluar si un libro debe disparar una notificación.
+---
 
-#### **BookState**
-Enumera los posibles estados de un libro: `GOOD` y `BAD`.  
-_Ejemplo (BookState.java):_
+### 3. Interfaces del Patrón Observer
+
+#### **ModelPullPushObservable**
+Define los métodos para manejar observadores: `attach`, `detach` y `updateObservers`.  
+_Ejemplo (ModelPullPushObservable.java):_
 ```java
-public enum BookState {
-    GOOD,
-    BAD
+public interface ModelPullPushObservable {
+    void attach(ModelPullPushObserver observer);
+    void detach(ModelPullPushObserver observer);
+    void updateObservers();
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/BookState.java)
+Proporciona un contrato que deben seguir las clases observables.
 
-Utilizado para determinar si la devolución de un libro debe generar una alerta.
+#### **ModelPullPushObserver**
+Define el método `update` que permite a los observadores recibir notificaciones del sujeto observable.  
+_Ejemplo (ModelPullPushObserver.java):_
+```java
+public interface ModelPullPushObserver {
+    void update(ModelPullPushObservable observable, Object object);
+}
+```
+Permite manejar notificaciones tanto con datos enviados directamente (Push) como mediante consultas (Pull).
+
+---
+
+### 4. Clase Observable
 
 #### **BookAlarm**
-Implementa la interfaz `PullPushModelObservable` y actúa como el sujeto observable.  
-Responsable de:
-- Mantener la lista de observadores.
-- Almacenar la variable de estado (`lastBadBook`).
-- Notificar a todos los observadores cuando se detecta un libro en mal estado.  
-  _Ejemplo (BookAlarm.java):_
+Implementa la interfaz `ModelPullPushObservable` y actúa como el sujeto que notifica a los observadores cuando un libro en mal estado es devuelto.  
+_Ejemplo (BookAlarm.java):_
 ```java
-public class BookAlarm implements PullPushModelObservable {
-    private Book lastBadBook;
-    private List<PullPushObserver> observers = new ArrayList<>();
+public class BookAlarm implements ModelPullPushObservable {
+    private List<ModelPullPushObserver> observers;
+    private Book book;
+
+    public void setBook(Book book) {
+        this.book = book;
+        updateObservers();
+    }
 
     @Override
-    public void attach(PullPushObserver observer) { observers.add(observer); }
-    @Override
-    public void detach(PullPushObserver observer) { observers.remove(observer); }
-    @Override
-    public void notifyObservers() {
-        for (PullPushObserver observer : observers) {
-            observer.update(this, lastBadBook); // Se notifica mediante push.
+    public void updateObservers() {
+        for (ModelPullPushObserver observer : observers) {
+            observer.update(this, this.book);
         }
     }
-    
-    public void setLastBadBook(Book book) { this.lastBadBook = book; }
-    public Book getLastBadBook() { return lastBadBook; }
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/BookAlarm.java)
+> [!NOTE]
+> **Nota Importante:**  
+> La clase `BookAlarm` soporta notificaciones por Push (enviando el libro directamente) y Pull (permitiendo consultar el último libro notificado).
 
-Soporta notificaciones push (envío directo del objeto) y pull (los observadores consultan mediante `getLastBadBook()`).
+---
+
+### 5. Clase Controladora
 
 #### **Library**
-Actúa como el disparador de la notificación.  
-Contiene una instancia de `BookAlarm` y el método `returnBook(Book book)` que:
-- Comprueba el estado del libro.
-- Si el libro está en mal estado (`BookState.BAD`), actualiza la alarma y notifica a los observadores.  
-  _Ejemplo (Library.java):_
+Encapsula la lógica de negocio asociada a la devolución de libros y actúa como un mediador entre los libros y los observadores.  
+_Ejemplo (Library.java):_
 ```java
 public class Library {
     private BookAlarm bookAlarm;
 
-    public Library() {
-        this.bookAlarm = new BookAlarm();
-    }
-
-    public BookAlarm getBookAlarm() { return bookAlarm; }
-    
-    // Devuelve un libro y notifica si está en mal estado.
     public void returnBook(Book book) {
-        if (book.getBookState() == BookState.BAD) {
-            bookAlarm.setLastBadBook(book);
-            bookAlarm.notifyObservers();
+        if (book.getBookState().equals(BookState.BAD)) {
+            this.bookAlarm.setBook(book);
         }
     }
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/Library.java)
-
-Esta clase encapsula la lógica de negocio asociada a la devolución de libros.
-
-> [!NOTE]  
-> **Recomendación para Pruebas:**  
-> Ejecuta la clase `LibraryPullPushObserverTest` para observar cómo se alternan las estrategias en tiempo real. Esto ilustra claramente el beneficio del patrón Observer en aplicaciones con comportamientos variables.
+> [!NOTE]
+> **Punto Clave:**  
+> La biblioteca verifica si el libro devuelto está en mal estado antes de activar la alarma.
 
 ---
 
-### 3. Clases Concretas de Observadores
+### 6. Clases Concretas de Observadores
 
-Cada observador implementa la interfaz `PullPushObserver` y define cómo reaccionar ante la notificación, comprobando si recibe la variable de estado mediante push o, en su defecto, consultándola mediante pull.
-
-#### **StockDepartmentObserver**
-Representa el departamento de Stock.  
-_Ejemplo (StockDepartmentObserver.java):_
-```java
-public class StockDepartmentObserver implements PullPushObserver {
-    @Override
-    public void update(PullPushModelObservable observable, Object arg) {
-        if (observable instanceof BookAlarm) {
-            BookAlarm alarm = (BookAlarm) observable;
-            if (arg instanceof Book) {
-                System.out.println("[StockDepartmentObserver Push] se ha devuelto el libro en mal estado");
-                System.out.println(arg);
-            } else {
-                System.out.println("[StockDepartmentObserver Pull] se ha devuelto el libro en mal estado");
-                System.out.println(alarm.getLastBadBook());
-            }
-        }
-    }
-}
-```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/StockDepartmentObserver.java)
-
-> [!IMPORTANT]  
-> **Punto Clave:** 
-> Los observadores utilizan tanto el protocolo Push (cuando el observable envía el objeto directamente) como el protocolo Pull (cuando el observador consulta al observable para obtener el estado).
-
-> [!TIP]  
-> **Recomendación:**  
-> Utiliza preferentemente el protocolo Push para evitar consultas adicionales, pero en caso de no recibir el objeto, recurre al protocolo Pull para consultar el estado directamente desde el observable.
-
-#### **ComprasDepartmentObserver**
-Representa el departamento de Compras.  
-_Ejemplo (ComprasDepartmentObserver.java):_
-```java
-public class ComprasDepartmentObserver implements PullPushObserver {
-    @Override
-    public void update(PullPushModelObservable observable, Object arg) {
-        if (observable instanceof BookAlarm) {
-            if (arg instanceof Book) {
-                System.out.println("[ComprasDepartmentObserver Push] se ha devuelto el libro en mal estado");
-                System.out.println(arg);
-            } else {
-                System.out.println("[ComprasDepartmentObserver Pull] se ha devuelto el libro en mal estado");
-                System.out.println(((BookAlarm)observable).getLastBadBook());
-            }
-        }
-    }
-}
-```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/ComprasDepartmentObserver.java)
-
-> [!NOTE]  
-> **Importante:**  
-> Los mensajes que se muestran en cada observador son específicos para su contexto, permitiendo a cada departamento recibir notificaciones detalladas sobre la devolución de libros en mal estado.
+Cada observador implementa la interfaz `ModelPullPushObserver` y define su comportamiento frente a las notificaciones:
 
 #### **AdminDepartmentObserver**
-Representa el departamento de Administración.  
-_Ejemplo (AdminDepartmentObserver.java):_
+Representa al departamento de administración.  
+_Ejemplo:_
 ```java
-public class AdminDepartmentObserver implements PullPushObserver {
+public class AdminDepartmentObserver implements ModelPullPushObserver {
     @Override
-    public void update(PullPushModelObservable observable, Object arg) {
-        if (observable instanceof BookAlarm) {
-            if (arg instanceof Book) {
-                System.out.println("[AdminDepartmentObserver Push] se ha devuelto el libro en mal estado");
-                System.out.println(arg);
-            } else {
-                System.out.println("[AdminDepartmentObserver Pull] se ha devuelto el libro en mal estado");
-                System.out.println(((BookAlarm)observable).getLastBadBook());
-            }
+    public void update(ModelPullPushObservable observable, Object object) {
+        if (object != null) {
+            System.out.println("[AdminDepartmentObserver Push] Libro en mal estado: " + object);
+        } else {
+            System.out.println("[AdminDepartmentObserver Pull] Libro en mal estado: " + ((BookAlarm) observable).getBook());
         }
     }
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/AdminDepartmentObserver.java)
 
-> [!IMPORTANT]  
-> **Punto Clave:**  
-> Cada observador debe ser capaz de procesar tanto las notificaciones recibidas por push como las obtenidas mediante pull, garantizando así que todos los departamentos estén siempre actualizados, independientemente del protocolo utilizado.
+#### **ComprasDepartmentObserver**
+Representa al departamento de compras.  
+_Ejemplo:_
+```java
+public class ComprasDepartmentObserver implements ModelPullPushObserver {
+    @Override
+    public void update(ModelPullPushObservable observable, Object object) {
+        System.out.println("[ComprasDepartmentObserver Push] Libro en mal estado: " + object);
+    }
+}
+```
+
+#### **StockDepartmentObserver**
+Representa al departamento de stock.  
+_Ejemplo:_
+```java
+public class StockDepartmentObserver implements ModelPullPushObserver {
+    @Override
+    public void update(ModelPullPushObservable observable, Object object) {
+        System.out.println("[StockDepartmentObserver Pull] Libro en mal estado: " + ((BookAlarm) observable).getBook());
+    }
+}
+```
 
 ---
 
-### 4. Clase de Prueba: LibraryPullPushObserverTest
+### 7. Clase de Prueba
 
-Esta clase contiene el método `main()` para demostrar la funcionalidad de la solución:
-
-- Se instancia la biblioteca y los tres observadores.
-- Los observadores se suscriben a la alarma de libros (`BookAlarm`).
-- Se simula la devolución de un libro en buen estado (sin notificación) y de otro en mal estado (activando las notificaciones).
-- Se desuscribe el observador de Compras y se realiza una nueva notificación.
-
-#### Ejemplo (LibraryPullPushObserverTest.java):
-
+#### **LibraryPullPushObserverTest**
+Valida la funcionalidad del patrón Observer. Simula la devolución de libros en buen y mal estado, así como la suscripción y desuscripción de observadores.  
+_Ejemplo:_
 ```java
 public class LibraryPullPushObserverTest {
     public static void main(String[] args) {
         Library library = new Library();
+        ModelPullPushObserver stockObserver = new StockDepartmentObserver();
+        ModelPullPushObserver adminObserver = new AdminDepartmentObserver();
+        ModelPullPushObserver comprasObserver = new ComprasDepartmentObserver();
 
-        // Instanciación de observadores
-        StockDepartmentObserver stockObserver = new StockDepartmentObserver();
-        AdminDepartmentObserver adminObserver = new AdminDepartmentObserver();
-        ComprasDepartmentObserver comprasObserver = new ComprasDepartmentObserver();
+        library.attachObserver(stockObserver);
+        library.attachObserver(adminObserver);
+        library.attachObserver(comprasObserver);
 
-        // Suscripción de observadores a la alarma
-        library.getBookAlarm().attach(stockObserver);
-        library.getBookAlarm().attach(adminObserver);
-        library.getBookAlarm().attach(comprasObserver);
+        Book bookGood = new Book("Gang of Four Design Patterns", "Erich Gamma", BookState.GOOD);
+        Book bookBad = new Book("Clean Code", "Robert C. Martin", BookState.BAD);
 
-        Book bookGood = new Book("Gang of four Design patterns", "Erich Gamma, Richard Helm", BookState.GOOD);
-        Book bookBad = new Book("Programar sin patrones", "desconocido", BookState.BAD);
+        library.returnBook(bookGood);  // No notifica
+        library.returnBook(bookBad);  // Notifica a los observadores
 
-        System.out.println("Alarma notifica bajo protocolo PULL-PUSH");
-        // Libro en buen estado, no se notifica
-        library.returnBook(bookGood);
-        // Libro en mal estado, se notifica a todos los observadores
-        library.returnBook(bookBad);
-
-        // Desuscribimos el departamento de Compras
-        library.getBookAlarm().detach(comprasObserver);
-
-        System.out.println("Alarma vuelve a notificar bajo protocolo PULL-PUSH");
-        Book otherBookBad = new Book("Programar sin pensar", "desconocido", BookState.BAD);
-        library.returnBook(otherBookBad);
+        library.detachObserver(comprasObserver);
+        Book anotherBookBad = new Book("Code Complete", "Steve McConnell", BookState.BAD);
+        library.returnBook(anotherBookBad);  // Notifica solo a los observadores restantes
     }
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/LibraryPullPushObserverTest.java)
-
-Esta clase demuestra la correcta interacción entre el observable y los observadores, así como la capacidad de gestionar suscripciones dinámicamente.
 
 ---
 
-## 📜 Ejecución de la Solución
+### 📜 Ejecución de la Solución
 
-Al ejecutar la clase `LibraryPullPushObserverTest`, se podrán observar en la consola los mensajes que indican:
-
-1. La notificación inicial a todos los departamentos cuando se devuelve un libro en mal estado.
-2. La notificación subsecuente, tras desuscribir el departamento de Compras, donde solo los observadores restantes reciben la alerta.
-
-> [!NOTE]  
-> **Observación:**  
-> Este ejercicio demuestra cómo la solución permite gestionar las suscripciones y las notificaciones dinámicamente, asegurando que la lógica de negocio es flexible y escalable.
-
-### Ejemplo de Salida:
+La salida esperada al ejecutar la clase de prueba es la siguiente:
 
 ```plaintext
 Alarma notifica bajo protocolo PULL-PUSH
-[StockDepartmentObserver Push] se ha devuelto el libro en mal estado
-Book [title=Programar sin patrones, author=desconocido, bookState=BAD]
-[AdminDepartmentObserver Push] se ha devuelto el libro en mal estado
-Book [title=Programar sin patrones, author=desconocido, bookState=BAD]
-[ComprasDepartmentObserver Push] se ha devuelto el libro en mal estado
-Book [title=Programar sin patrones, author=desconocido, bookState=BAD]
+[AdminDepartmentObserver Push] Libro en mal estado: Book [title=Clean Code, author=Robert C. Martin, bookState=BAD]
+[ComprasDepartmentObserver Push] Libro en mal estado: Book [title=Clean Code, author=Robert C. Martin, bookState=BAD]
+[StockDepartmentObserver Pull] Libro en mal estado: Book [title=Clean Code, author=Robert C. Martin, bookState=BAD]
 
 Alarma vuelve a notificar bajo protocolo PULL-PUSH
-[StockDepartmentObserver Push] se ha devuelto el libro en mal estado
-Book [title=Programar sin pensar, author=desconocido, bookState=BAD]
-[AdminDepartmentObserver Push] se ha devuelto el libro en mal estado
-Book [title=Programar sin pensar, author=desconocido, bookState=BAD]
+[AdminDepartmentObserver Push] Libro en mal estado: Book [title=Code Complete, author=Steve McConnell, bookState=BAD]
+[StockDepartmentObserver Pull] Libro en mal estado: Book [title=Code Complete, author=Steve McConnell, bookState=BAD]
 ```
+
+> [!TIP]
+> **Observación:**  
+> Este ejercicio demuestra cómo el patrón Observer maneja las notificaciones dinámicamente, adaptándose a cambios en tiempo de ejecución.
 
 ---
 
