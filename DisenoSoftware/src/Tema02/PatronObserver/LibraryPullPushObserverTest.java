@@ -8,35 +8,29 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
 public class LibraryPullPushObserverTest {
     public static void main(String[] args) {
         Library library = new Library();
 
-        //TODO Instancia los departamentos Stock, Admin y Compras como observadores
-        StockDepartmentObserver stockObserver = new StockDepartmentObserver();
-        AdminDepartmentObserver adminObserver = new AdminDepartmentObserver();
-        ComprasDepartmentObserver comprasObserver = new ComprasDepartmentObserver();
+        ModelPullPushObserver stockObserver = new StockDepartmentObserver();
+        ModelPullPushObserver adminObserver = new AdminDepartmentObserver();
+        ModelPullPushObserver comprasObserver = new ComprasDepartmentObserver();
 
-        //TODO provoca que los departamentos se suscriban a la biblioteca
-        library.getBookAlarm().attach(stockObserver);
-        library.getBookAlarm().attach(adminObserver);
-        library.getBookAlarm().attach(comprasObserver);
+        library.attachObserver(stockObserver);
+        library.attachObserver(adminObserver);
+        library.attachObserver(comprasObserver);
 
-        Book bookBad = new Book("Programar sin patrones", "desconocido", BookState.BAD);
-        Book bookGood = new Book("Gang of four Design patterns", "Erich Gamma, Richard Helm", BookState.GOOD);
+        Book bookGood = new Book("Gang of four Design patterns", "Erich Gamma", BookState.GOOD);
+        Book bookBad = new Book("Programar sin patrones", "Desconocido", BookState.BAD);
 
         System.out.println("Alarma notifica bajo protocolo PULL-PUSH");
-        // Este libro está en buen estado, no notifica nada
-        library.returnBook(bookGood);
-        // Este libro está en mal estado, dispara las notificaciones
-        library.returnBook(bookBad);
+        library.returnBook(bookGood);  // No debería notificar nada
+        library.returnBook(bookBad);  // Notifica a los observadores
 
-        //TODO provoca que el departamento de compras borre su suscripción
-        library.getBookAlarm().detach(comprasObserver);
+        library.detachObserver(comprasObserver);
 
         System.out.println("Alarma vuelve a notificar bajo protocolo PULL-PUSH");
-        Book otherBookBad = new Book("Programar sin pensar", "desconocido", BookState.BAD);
-        library.returnBook(otherBookBad);
+        Book anotherBookBad = new Book("Programar sin pensar", "Desconocido", BookState.BAD);
+        library.returnBook(anotherBookBad);
     }
 }

@@ -1,5 +1,8 @@
 package Tema02.PatronObserver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
  *
@@ -8,46 +11,41 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class BookAlarm implements PullPushModelObservable {
-
-    // Variable de estado: último libro en mal estado.
-    private Book lastBadBook;
-
-    // Lista de observadores suscritos.
-    private List<PullPushObserver> observers;
+public class BookAlarm implements ModelPullPushObservable {
+    private List<ModelPullPushObserver> observers;
+    private Book book;
 
     public BookAlarm() {
-        observers = new ArrayList<>();
+        this(new ArrayList<>());
+    }
+
+    public BookAlarm(List<ModelPullPushObserver> observers) {
+        this.observers = observers;
+    }
+
+    public Book getBook() {
+        return this.book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+        updateObservers();
     }
 
     @Override
-    public void attach(PullPushObserver observer) {
-        observers.add(observer);
+    public void attach(ModelPullPushObserver observer) {
+        this.observers.add(observer);
     }
 
     @Override
-    public void detach(PullPushObserver observer) {
-        observers.remove(observer);
+    public void detach(ModelPullPushObserver observer) {
+        this.observers.remove(observer);
     }
 
     @Override
-    public void notifyObservers() {
-        // Notifica a todos los observadores enviando la variable de estado por 'push'.
-        for (PullPushObserver observer : observers) {
-            observer.update(this, lastBadBook);
+    public void updateObservers() {
+        for (ModelPullPushObserver observer : observers) {
+            observer.update(this, this.book);
         }
-    }
-
-    public void setLastBadBook(Book book) {
-        this.lastBadBook = book;
-    }
-
-    // Protocolo pull: los observadores pueden consultar esta información.
-    public Book getLastBadBook() {
-        return lastBadBook;
     }
 }

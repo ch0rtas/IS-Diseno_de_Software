@@ -8,9 +8,8 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
-public interface PullPushModelObservable {
-    void attach(PullPushObserver observer);
-    void detach(PullPushObserver observer);
-    void notifyObservers();
+public interface ModelPullPushObservable {
+    void attach(ModelPullPushObserver observer);
+    void detach(ModelPullPushObserver observer);
+    void updateObservers();
 }

@@ -1,3 +1,7 @@
+> [!IMPORTANT]  
+> El contenido de esta explicación no se corresponde a los códigos implementados.
+
+
 # Patrón Observer (Tema 02) - Solución Observer
 
 <h1 align="center">

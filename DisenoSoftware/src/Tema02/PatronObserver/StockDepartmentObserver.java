@@ -1,5 +1,7 @@
 package Tema02.PatronObserver;
 
+import java.util.Objects;
+
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
  *
@@ -8,26 +10,14 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
-public class StockDepartmentObserver implements PullPushObserver {
-
+public class StockDepartmentObserver implements ModelPullPushObserver {
     @Override
-    public void update(PullPushModelObservable observable, Object arg) {
-        // Aseguramos que el observable es del tipo esperado (BookAlarm).
-        if (observable instanceof BookAlarm) {
+    public void update(ModelPullPushObservable observable, Object object) {
+        if (!Objects.isNull(object)) {
+            System.out.println("[StockDepartmentObserver Push] se ha devuelto el libro en mal estado " + object);
+        } else if (observable instanceof BookAlarm) {
             BookAlarm alarm = (BookAlarm) observable;
-
-            // Prioridad: usar 'arg' (push) si está presente y es un Book.
-            if (arg instanceof Book) {
-                Book badBook = (Book) arg;
-                System.out.println("[StockDepartmentObserver Push] se ha devuelto el libro en mal estado");
-                System.out.println(badBook);
-            } else {
-                // Fallback: protocolo pull.
-                Book badBook = alarm.getLastBadBook();
-                System.out.println("[StockDepartmentObserver Pull] se ha devuelto el libro en mal estado");
-                System.out.println(badBook);
-            }
+            System.out.println("[StockDepartmentObserver Pull] se ha devuelto el libro en mal estado " + alarm.getBook());
         }
     }
 }

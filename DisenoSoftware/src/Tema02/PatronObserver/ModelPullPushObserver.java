@@ -8,9 +8,6 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
-public enum BookState {
-    UNKNOWN,
-    BAD,
-    GOOD
+public interface ModelPullPushObserver {
+    void update(ModelPullPushObservable observable, Object object);
 }

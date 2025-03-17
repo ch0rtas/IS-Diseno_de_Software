@@ -10,9 +10,18 @@ package Tema02.PatronObserver;
 
 
 public class Book {
+    public static final String DEFAULT_VALUE = "N/A";
     private String title;
     private String author;
     private BookState bookState;
+
+    public Book(String title) {
+        this(title, Book.DEFAULT_VALUE);
+    }
+
+    public Book(String title, String author) {
+        this(title, author, BookState.UNKNOWN);
+    }
 
     public Book(String title, String author, BookState bookState) {
         this.title = title;
@@ -24,12 +33,24 @@ public class Book {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getAuthor() {
         return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public BookState getBookState() {
         return bookState;
+    }
+
+    public void setBookState(BookState bookState) {
+        this.bookState = bookState;
     }
 
     @Override

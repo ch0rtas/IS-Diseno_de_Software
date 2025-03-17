@@ -1,5 +1,7 @@
 package Tema02.PatronObserver;
 
+import java.util.Objects;
+
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
  *
@@ -8,21 +10,14 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
-public class ComprasDepartmentObserver implements PullPushObserver {
-
+public class ComprasDepartmentObserver implements ModelPullPushObserver {
     @Override
-    public void update(PullPushModelObservable observable, Object arg) {
-        if (observable instanceof BookAlarm) {
+    public void update(ModelPullPushObservable observable, Object object) {
+        if (!Objects.isNull(object)) {
+            System.out.println("[ComprasDepartmentObserver Push] se ha devuelto el libro en mal estado " + object);
+        } else if (observable instanceof BookAlarm) {
             BookAlarm alarm = (BookAlarm) observable;
-
-            if (arg instanceof Book) {
-                System.out.println("[ComprasDepartmentObserver Push] se ha devuelto el libro en mal estado");
-                System.out.println(arg);
-            } else {
-                System.out.println("[ComprasDepartmentObserver Pull] se ha devuelto el libro en mal estado");
-                System.out.println(alarm.getLastBadBook());
-            }
+            System.out.println("[ComprasDepartmentObserver Pull] se ha devuelto el libro en mal estado " + alarm.getBook());
         }
     }
 }

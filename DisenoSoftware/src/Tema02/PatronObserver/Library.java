@@ -8,24 +8,32 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-
 public class Library {
-
     private BookAlarm bookAlarm;
 
     public Library() {
-        this.bookAlarm = new BookAlarm();
+        this(new BookAlarm());
+    }
+
+    public Library(BookAlarm bookAlarm) {
+        this.bookAlarm = bookAlarm;
     }
 
     public BookAlarm getBookAlarm() {
-        return bookAlarm;
+        return this.bookAlarm;
     }
 
-    // Devuelve un libro; si está en mal estado, notifica a los observadores.
+    public void attachObserver(ModelPullPushObserver observer) {
+        this.bookAlarm.attach(observer);
+    }
+
+    public void detachObserver(ModelPullPushObserver observer) {
+        this.bookAlarm.detach(observer);
+    }
+
     public void returnBook(Book book) {
-        if (book.getBookState() == BookState.BAD) {
-            bookAlarm.setLastBadBook(book);
-            bookAlarm.notifyObservers();
+        if (book.getBookState().equals(BookState.BAD)) {
+            this.bookAlarm.setBook(book);
         }
     }
 }
