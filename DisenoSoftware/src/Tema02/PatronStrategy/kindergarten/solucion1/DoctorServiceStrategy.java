@@ -1,4 +1,4 @@
-package Tema02.PatronStrategy.solucion1;
+package Tema02.PatronStrategy.kindergarten.solucion1;
 
 /**
  * Patrón Strategy (Tema 02) - Ejercicio Guardería

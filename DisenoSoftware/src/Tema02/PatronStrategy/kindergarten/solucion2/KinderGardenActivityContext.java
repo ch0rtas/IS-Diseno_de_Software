@@ -1,4 +1,4 @@
-package Tema02.PatronStrategy.solucion2;
+package Tema02.PatronStrategy.kindergarten.solucion2;
 
 /**
  * Patrón Strategy (Tema 02) - Ejercicio Guardería
@@ -9,7 +9,7 @@ package Tema02.PatronStrategy.solucion2;
  */
 
 
-import Tema02.PatronStrategy.solucion1.DoctorServiceStrategy;
+import Tema02.PatronStrategy.kindergarten.solucion1.DoctorServiceStrategy;
 
 public class KinderGardenActivityContext implements DoctorServiceStrategy {
     private DoctorServiceStrategy doctorServiceStrategy; // Nombre corregido

@@ -1,4 +1,4 @@
-package Tema02.PatronStrategy.solucion1;
+package Tema02.PatronStrategy.kindergarten.solucion2;
 
 /**
  * Patrón Strategy (Tema 02) - Ejercicio Guardería
@@ -9,6 +9,9 @@ package Tema02.PatronStrategy.solucion1;
  */
 
 
+import Tema02.PatronStrategy.kindergarten.solucion1.FongDoctorStrategy;
+import Tema02.PatronStrategy.kindergarten.solucion1.WangDoctorStrategy;
+
 public class TestKinderGardenService {
     public static void main(String[] args) {
         System.out.println("========================================");
@@ -17,13 +20,13 @@ public class TestKinderGardenService {
 
         // Suponemos que pasa consulta el Dr. Fong
         System.out.println(">> Servicio médico en curso: Dr. Fong <<");
-        KinderGardenServiceContext kinderGardenContext = new KinderGardenServiceContext(new FongDoctorStrategy());
+        KinderGardenActivityContext kinderGardenContext = new KinderGardenActivityContext(new FongDoctorStrategy());
         kinderGardenContext.applyServiceStrategy();
         System.out.println("-------------------------------------\n");
 
         // Cambiamos el servicio médico, ahora pasa consulta el Dr. Wong
         System.out.println(">> Cambiando al servicio médico: Dr. Wang <<");
-        kinderGardenContext.setServiceStrategy(new WangDoctorStrategy());
+        kinderGardenContext.setDoctorServiceStrategy(new WangDoctorStrategy());
         kinderGardenContext.applyServiceStrategy();
         System.out.println("-------------------------------------\n");
 

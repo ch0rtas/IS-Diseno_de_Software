@@ -1,4 +1,4 @@
-package Tema02.PatronStrategy.solucion1;
+package Tema02.PatronStrategy.kindergarten.solucion1;
 
 /**
  * Patrón Strategy (Tema 02) - Ejercicio Guardería
@@ -9,7 +9,7 @@ package Tema02.PatronStrategy.solucion1;
  */
 
 
-public class FongDoctorStrategy implements DoctorServiceStrategy {
+public class WangDoctorStrategy implements DoctorServiceStrategy {
     public void inspectChildren() {
         System.out.println(this + ", estoy inspeccionando al niño.");
     }
@@ -21,9 +21,9 @@ public class FongDoctorStrategy implements DoctorServiceStrategy {
     }
     @Override
     public String toString() {
-        return "FongDoctorStrategy";
+        return "WangDoctorStrategy";
     }
-    // El Dr. Fong envía la factura antes que los resultados.
+    // El Dr. Wang envía la factura antes que los resultados.
     public void applyServiceStrategy() {
         this.inspectChildren();
         this.sendInvoice();
