@@ -1,4 +1,4 @@
-package Tema02.PatronObserver;
+package Tema02.PatronObserver.library;
 
 import java.util.ArrayList;
 import java.util.List;

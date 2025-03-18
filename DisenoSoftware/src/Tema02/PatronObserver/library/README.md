@@ -58,15 +58,15 @@ La solución se encuentra en la carpeta `PatronObserver` con la siguiente estruc
 ## 🌟 Diagrama UML de la Solución
 
 <p align="center">
-  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/UML1.png">
-    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronObserver/UML1.png" alt="Diagrama UML" width="600"/>
+  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/library/UML.png">
+    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronObserver/library/UML.png" alt="Diagrama UML" width="600"/>
   </a>
 </p>
 <p align="center"><i>Figura 1: Diagrama UML generado a partir de la solución.</i></p>
 
 <p align="center">
-  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/UML1.drawio">
-    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronObserver/UML1.drawio.png" alt="Diagrama UML en formato Drawio" width="600"/>
+  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronObserver/library/UML.drawio">
+    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronObserver/library/UML.drawio.png" alt="Diagrama UML en formato Drawio" width="600"/>
   </a>
 </p>
 <p align="center"><i>Figura 2: Diagrama UML en formato Draw.io.</i></p>

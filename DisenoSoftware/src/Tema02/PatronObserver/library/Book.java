@@ -1,4 +1,4 @@
-package Tema02.PatronObserver;
+package Tema02.PatronObserver.library;
 
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca

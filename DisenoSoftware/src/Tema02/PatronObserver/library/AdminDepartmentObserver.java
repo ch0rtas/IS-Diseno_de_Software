@@ -1,4 +1,4 @@
-package Tema02.PatronObserver;
+package Tema02.PatronObserver.library;
 
 import java.util.Objects;
 
@@ -10,14 +10,14 @@ import java.util.Objects;
  * @course INSO 2 - Diseño de Software
  */
 
-public class StockDepartmentObserver implements ModelPullPushObserver {
+public class AdminDepartmentObserver implements ModelPullPushObserver {
     @Override
     public void update(ModelPullPushObservable observable, Object object) {
         if (!Objects.isNull(object)) {
-            System.out.println("[StockDepartmentObserver Push] se ha devuelto el libro en mal estado " + object);
+            System.out.println("[AdminDepartmentObserver Push] se ha devuelto el libro en mal estado " + object);
         } else if (observable instanceof BookAlarm) {
             BookAlarm alarm = (BookAlarm) observable;
-            System.out.println("[StockDepartmentObserver Pull] se ha devuelto el libro en mal estado " + alarm.getBook());
+            System.out.println("[AdminDepartmentObserver Pull] se ha devuelto el libro en mal estado " + alarm.getBook());
         }
     }
 }

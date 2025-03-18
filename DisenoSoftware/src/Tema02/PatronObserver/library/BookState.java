@@ -1,4 +1,4 @@
-package Tema02.PatronObserver;
+package Tema02.PatronObserver.library;
 
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
@@ -8,6 +8,9 @@ package Tema02.PatronObserver;
  * @course INSO 2 - Diseño de Software
  */
 
-public interface ModelPullPushObserver {
-    void update(ModelPullPushObservable observable, Object object);
+
+public enum BookState {
+    UNKNOWN,
+    BAD,
+    GOOD
 }

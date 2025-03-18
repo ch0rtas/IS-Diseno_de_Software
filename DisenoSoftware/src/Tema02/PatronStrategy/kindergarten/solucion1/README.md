@@ -14,8 +14,8 @@
 ## 📄 Enunciado del Ejercicio
 
 <p align="center">
-  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/Ejercicio_PatronStrategy.png">
-    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/Ejercicio_PatronStrategy.png" alt="Enunciado del ejercicio" width="600"/>
+  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/Ejercicio_PatronStrategy.png">
+    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/Ejercicio_PatronStrategy.png" alt="Enunciado del ejercicio" width="600"/>
   </a>
 </p>
 
@@ -31,7 +31,7 @@ El ejercicio consiste en implementar una solución basada en el **Patrón Strate
 
 ### 📁 Estructura de la carpeta `solucion1`:
 ```
-📁 PatronStrategy/solucion1
+📁 PatronStrategy/kindergarten/solucion1
    ├── 📄 DoctorServiceStrategy.java
    ├── 📄 FongDoctorStrategy.java
    ├── 📄 KinderGardenServiceContext.java
@@ -50,15 +50,15 @@ El ejercicio consiste en implementar una solución basada en el **Patrón Strate
 ## 🌟 Diagrama UML de la Solución
 
 <p align="center">
-  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.png">
-    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.png" alt="Diagrama UML" width="600"/>
+  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/UML.png">
+    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/UML.png" alt="Diagrama UML" width="600"/>
   </a>
 </p>
 <p align="center"><i>Figura 1: Diagrama UML generado por IntelliJ.</i></p>
 
 <p align="center">
-  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.drawio">
-    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/UML1.drawio.png" alt="Diagrama UML en formato Drawio" width="600"/>
+  <a href="https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/UML.drawio">
+    <img src="https://github.com/ch0rtas/IS-Diseno_de_Software/raw/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/UML.drawio.png" alt="Diagrama UML en formato Drawio" width="600"/>
   </a>
 </p>
 <p align="center"><i>Figura 2: Diagrama UML generado en formato Draw.io.</i></p>
@@ -85,7 +85,7 @@ La solución se estructura en tres componentes principales:
       public void applyServiceStrategy();
   }
   ```
-  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/ServiceStrategy.java)
+  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/ServiceStrategy.java)
 
   > [!NOTE]
   > **Extensión de Interfaces:**  
@@ -105,7 +105,7 @@ La solución se estructura en tres componentes principales:
       public void sendInvoice();
   }
   ```
-  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/DoctorServiceStrategy.java)
+  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/DoctorServiceStrategy.java)
 
 ---
 
@@ -146,7 +146,7 @@ Cada clase concreta implementa `DoctorServiceStrategy` y define la forma en la q
       }
   }
   ```
-  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/FongDoctorStrategy.java)
+  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/FongDoctorStrategy.java)
 
   > [!TIP]
   > **Personalización de Estrategias:**  
@@ -184,7 +184,7 @@ Cada clase concreta implementa `DoctorServiceStrategy` y define la forma en la q
       }
   }
   ```
-  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/WangDoctorStrategy.java)
+  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/WangDoctorStrategy.java)
 
 
 - **`NoDoctorServiceStrategy`**  
@@ -215,7 +215,7 @@ Cada clase concreta implementa `DoctorServiceStrategy` y define la forma en la q
       }
   }
   ```
-  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/NoDoctorServiceStrategy.java)
+  [Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/NoDoctorServiceStrategy.java)
 
 > [!IMPORTANT]
 > **Nota sobre el Orden de Ejecución:**  
@@ -243,7 +243,7 @@ public class KinderGardenServiceContext implements ServiceStrategy {
     }
 }
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/KinderGardenServiceContext.java)
+[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/KinderGardenServiceContext.java)
 
 > [!IMPORTANT]
 > **Punto Clave:**  
@@ -312,7 +312,7 @@ public class TestKinderGardenService {
      Fin del servicio KinderGarden
 ========================================
 ```
-[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/TestKinderGardenService.java)
+[Ver código completo](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1/TestKinderGardenService.java)
 
 ---
 

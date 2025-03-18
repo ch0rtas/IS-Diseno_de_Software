@@ -32,7 +32,7 @@ Se debe utilizar el **Patrón Strategy** para modelar esta situación, de forma 
 
 ### 📁 Estructura completa del proyecto `PatronStrategy`:
 ```
-📁 PatronStrategy  
+📁 PatronStrategy/kindergarten  
    ├── 📁 solucion1  
    │   ├── 📄 DoctorServiceStrategy.java  
    │   ├── 📄 FongDoctorStrategy.java  
@@ -77,7 +77,7 @@ En esta solución, cada estrategia concreta implementa un único método (`apply
     - [`TestKinderGardenService`](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1/TestKinderGardenService.java): Clase principal para ejecutar y probar la solución.
 
 - **Código Fuente y UML**:
-  [Solución 1](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion1)
+  [Solución 1](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion1)
 
 > [!TIP]  
 > **Beneficios Clave (Patrón Strategy):**  
@@ -104,7 +104,7 @@ En esta solución, la interfaz común tiene tres métodos específicos (`inspect
     - [`TestKinderGardenService`](https://github.com/ch0rtas/IS-Diseno_de_Software/blob/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2/TestKinderGardenService.java): Clase principal para ejecutar y probar la solución.
 
 - **Código Fuente y UML**:
-  [Solución 2](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/solucion2)
+  [Solución 2](https://github.com/ch0rtas/IS-Diseno_de_Software/tree/main/DisenoSoftware/src/Tema02/PatronStrategy/kindergarten/solucion2)
 
 > [!NOTE]  
 > **Recomendación para Pruebas:**  
