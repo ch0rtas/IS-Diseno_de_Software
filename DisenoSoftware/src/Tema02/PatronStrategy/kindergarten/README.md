@@ -1,4 +1,4 @@
-# Patrón Strategy (Tema 02) - Ejercicio Guardería
+# Patrón Strategy (Tema 02) - Kindergarten
 
 <h1 align="center">
   <img src="https://readme-typing-svg.demolab.com/?font=Poppins&size=40&duration=4000&pause=1200&color=007CF0&center=true&vCenter=true&width=650&height=70&lines=Patr%C3%B3n+Strategy;Ejercicio+de+Dise%C3%B1o+de+Software" />

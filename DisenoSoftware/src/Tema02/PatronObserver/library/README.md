@@ -1,4 +1,4 @@
-# Patrón Observer (Tema 02) - Solución Observer
+# Patrón Observer (Tema 02) - Library
 
 <h1 align="center">
   <img src="https://readme-typing-svg.demolab.com/?font=Poppins&size=40&duration=4000&pause=1200&color=007CF0&center=true&vCenter=true&width=900&height=70&lines=Patr%C3%B3n+Observer+%7C+Soluci%C3%B3n+Observer;Ejercicio+del+Tema+02+de+Dise%C3%B1o+de+Software" />
