@@ -309,6 +309,8 @@ public class KinderGardenDecoratorTest {
 }
 ```
 
+---
+
 ## 📜 Ejecución de la Solución
 
 Al ejecutar la clase `KinderGardenDecoratorTest`, se espera obtener una salida similar a la siguiente:
@@ -330,17 +332,19 @@ Inés tiene el libro: Desing patterns
 > **Recomendación para Pruebas:**  
 > Ejecuta la clase `KinderGardenDecoratorTest` para observar la dinámica de aplicación de decoradores y cómo se combinan las recompensas en tiempo de ejecución.
 
+---
+
 ## 💡 Ventajas de la Solución
 
-> [!TIP]
-> **Beneficios Clave (Patrón Decorator):**
->
-> - **Extensibilidad:** Permite agregar nuevas recompensas sin modificar la clase base.
-> - **Flexibilidad:** Las recompensas se pueden añadir y quitar dinámicamente en tiempo real.
-> - **Mantenimiento:** Cada decorador encapsula una responsabilidad específica, facilitando la extensión y modificación del sistema.
-> - **Extensibilidad:** Al implementar nuevos decoradores, se pueden introducir funcionalidades adicionales sin alterar el objeto base.
-> - **Flexibilidad:** Se pueden combinar distintas recompensas de forma dinámica según las necesidades.
-> - **Mantenimiento:** La separación de responsabilidades en decoradores específicos simplifica futuras modificaciones.
+**Beneficios Clave (Patrón Decorator):**
+- **Extensibilidad:** Permite agregar nuevas recompensas sin modificar la clase base.
+- **Flexibilidad:** Las recompensas se pueden añadir y quitar dinámicamente en tiempo real.
+- **Mantenimiento:** Cada decorador encapsula una responsabilidad específica, facilitando la extensión y modificación del sistema.
+- **Extensibilidad:** Al implementar nuevos decoradores, se pueden introducir funcionalidades adicionales sin alterar el objeto base.
+- **Flexibilidad:** Se pueden combinar distintas recompensas de forma dinámica según las necesidades.
+- **Mantenimiento:** La separación de responsabilidades en decoradores específicos simplifica futuras modificaciones.
+
+---
 
 ## 📬 Contacto
 
