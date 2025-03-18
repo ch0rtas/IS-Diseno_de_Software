@@ -43,9 +43,9 @@ La solución se encuentra en la carpeta `PatronObserver` con la siguiente estruc
    ├── 📄 BookState.java
    ├── 📄 ComprasDepartmentObserver.java
    ├── 📄 Library.java
-   ├── 📄 LibraryObserverTest.java
-   ├── 📄 Observable.java
-   ├── 📄 Observer.java
+   ├── 📄 LibraryPullPushObserverTest.java
+   ├── 📄 ModelPullPushObservable.java
+   ├── 📄 ModelPullPushObserver.java
    ├── 📄 StockDepartmentObserver.java
    ├── 📄 README.md
    ├── 📄 UML1.drawio
