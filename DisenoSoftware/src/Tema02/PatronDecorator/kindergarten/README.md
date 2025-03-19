@@ -60,7 +60,7 @@ La solución permite añadir o retirar recompensas sin modificar la estructura d
     <img src="UML.png" alt="Diagrama UML" width="600"/>
   </a>
 </p>
-<p align="center"><i>Figura 1: Diagrama UML generado para el Patrón Decorator en la guardería.</i></p>
+<p align="center"><i>Figura 1: Diagrama UML generado por Intellij.</i></p>
 
 <p align="center">
   <a href="UML.drawio">

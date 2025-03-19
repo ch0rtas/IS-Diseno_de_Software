@@ -1,5 +1,3 @@
-package Tema02.PatronObserver.library;
-
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
  *
@@ -7,7 +5,7 @@ package Tema02.PatronObserver.library;
  * @date 2025.03.04
  * @course INSO 2 - Diseño de Software
  */
-
+package Tema02.PatronObserver.library;
 
 public class Book {
     public static final String DEFAULT_VALUE = "N/A";

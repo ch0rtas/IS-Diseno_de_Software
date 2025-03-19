@@ -1,8 +1,3 @@
-package Tema02.PatronObserver.library;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
  *
@@ -10,6 +5,10 @@ import java.util.List;
  * @date 2025.03.04
  * @course INSO 2 - Diseño de Software
  */
+package Tema02.PatronObserver.library;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookAlarm implements ModelPullPushObservable {
     private List<ModelPullPushObserver> observers;

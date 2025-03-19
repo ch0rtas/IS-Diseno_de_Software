@@ -1,5 +1,3 @@
-package Tema02.PatronStrategy.kindergarten.solucion2;
-
 /**
  * Patrón Strategy (Tema 02) - Ejercicio Guardería
  *
@@ -7,7 +5,7 @@ package Tema02.PatronStrategy.kindergarten.solucion2;
  * @date 2025.02.15
  * @course INSO 2 - Diseño de Software
  */
-
+package Tema02.PatronStrategy.kindergarten.solucion2;
 
 import Tema02.PatronStrategy.kindergarten.solucion1.FongDoctorStrategy;
 import Tema02.PatronStrategy.kindergarten.solucion1.WangDoctorStrategy;

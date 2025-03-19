@@ -1,7 +1,3 @@
-package Tema02.PatronObserver.library;
-
-import java.util.Objects;
-
 /**
  * Patrón Observer (Tema 02) - Ejercicio Biblioteca
  *
@@ -9,6 +5,9 @@ import java.util.Objects;
  * @date 2025.03.04
  * @course INSO 2 - Diseño de Software
  */
+package Tema02.PatronObserver.library;
+
+import java.util.Objects;
 
 public class StockDepartmentObserver implements ModelPullPushObserver {
     @Override

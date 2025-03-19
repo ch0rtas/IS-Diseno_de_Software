@@ -1,5 +1,3 @@
-package Tema02.PatronStrategy.kindergarten.solucion1;
-
 /**
  * Patrón Strategy (Tema 02) - Ejercicio Guardería
  *
@@ -7,7 +5,7 @@ package Tema02.PatronStrategy.kindergarten.solucion1;
  * @date 2025.02.15
  * @course INSO 2 - Diseño de Software
  */
-
+package Tema02.PatronStrategy.kindergarten.solucion1;
 
 public class TestKinderGardenService {
     public static void main(String[] args) {

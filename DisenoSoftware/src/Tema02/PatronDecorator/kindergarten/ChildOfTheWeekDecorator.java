@@ -1,5 +1,3 @@
-package Tema02.PatronDecorator.kindergarten;
-
 /**
  * Patrón Decorator (Tema 02) - Ejercicio Guardería
  *
@@ -7,7 +5,7 @@ package Tema02.PatronDecorator.kindergarten;
  * @date 2025.03.16
  * @course INSO 2 - Diseño de Software
  */
-
+package Tema02.PatronDecorator.kindergarten;
 
 import Tema02.PatronObserver.library.Book;
 
