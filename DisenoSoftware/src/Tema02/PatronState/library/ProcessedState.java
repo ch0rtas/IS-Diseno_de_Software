@@ -1,13 +1,13 @@
 package Tema02.PatronState.library;
 
-class RejectedState implements LibraryLoanState {
+class ProcessedState implements LibraryLoanState {
     @Override
     public void process(LibraryLoanRequestContext context) {
-        System.out.println("Loan request has been rejected");
+        // System.out.println("Processing Processed State: Book is currently on loan");
     }
 
     @Override
     public String getStateName() {
-        return "Rejected";
+        return "Processed";
     }
 }
