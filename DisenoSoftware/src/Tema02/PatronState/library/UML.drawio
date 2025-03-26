@@ -1,0 +1,206 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0" version="26.1.1">
+  <diagram id="wRVYt-0N7YDfKv8nTqo1" name="Página-1">
+    <mxGraphModel dx="3252" dy="1962" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="node0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AdmittedState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ AdmittedState(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getStateName(): String&lt;br/&gt;+ process(LibraryLoanRequestContext): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="584" y="862" width="312" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="node1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CreatedState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ CreatedState(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getStateName(): String&lt;br/&gt;+ process(LibraryLoanRequestContext): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="724" y="1242" width="312" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="node9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FinishedState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ FinishedState(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getStateName(): String&lt;br/&gt;+ process(LibraryLoanRequestContext): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-96" y="862" width="312" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="node4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LibraryLoanRequestContext&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ LibraryLoanRequestContext(LoansLibrary, Book, LibraryUser): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getBook(): Book&lt;br/&gt;+ getLibraryUser(): LibraryUser&lt;br/&gt;+ isPickupWithinDeadline(): boolean&lt;br/&gt;+ getCreatedDate(): LocalDate&lt;br/&gt;+ process(): void&lt;br/&gt;+ getReturnDate(): LocalDate&lt;br/&gt;+ setState(LibraryLoanState): void&lt;br/&gt;+ getPickupDate(): LocalDate&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="1450" width="436" height="256" as="geometry" />
+        </mxCell>
+        <mxCell id="node5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;LibraryLoanState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ process(LibraryLoanRequestContext): void&lt;br/&gt;+ getStateName(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="424" y="295" width="312" height="109" as="geometry" />
+        </mxCell>
+        <mxCell id="node10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LibraryUser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ LibraryUser(String, String, UserType, Boolean): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getName(): String&lt;br/&gt;+ update(ModelPullPushObservable, Object): void&lt;br/&gt;+ isActiveAccount(): boolean&lt;br/&gt;+ getUserType(): UserType&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="288" y="1058" width="345" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="node3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LoansLibrary&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ LoansLibrary(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ processLibraryLoan(LibraryLoanRequestContext): void&lt;br/&gt;+ returnBook(Book, LibraryLoanRequestContext): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-132" y="1242" width="385" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="node8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;NotificationStrategy&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ update(ModelPullPushObserver, ModelPullPushObservable, Object): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-119" y="-13" width="479" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="node6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ProcessedState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ ProcessedState(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ process(LibraryLoanRequestContext): void&lt;br/&gt;+ getStateName(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="504" y="502" width="312" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="node7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PushNotificationStrategy&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ PushNotificationStrategy(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ update(ModelPullPushObserver, ModelPullPushObservable, Object): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="-119" y="154" width="479" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="node11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;RejectedState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ RejectedState(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ process(LibraryLoanRequestContext): void&lt;br/&gt;+ getStateName(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="144" y="502" width="312" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="node2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;UserType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- UserType(int): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getLoanDays(): int&lt;br/&gt;+ valueOf(String): UserType&lt;br/&gt;+ values(): UserType[]&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="337" y="690" width="207" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.750;exitY=0.000;exitDx=0;exitDy=0;entryX=0.750;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node0" target="node5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="818" y="798" />
+              <mxPoint x="840" y="798" />
+              <mxPoint x="840" y="478" />
+              <mxPoint x="660" y="478" />
+              <mxPoint x="660" y="418" />
+              <mxPoint x="658" y="418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node0" target="node6" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="662" y="838" />
+              <mxPoint x="660" y="838" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge8" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node0" target="node11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="662" y="838" />
+              <mxPoint x="660" y="838" />
+              <mxPoint x="660" y="658" />
+              <mxPoint x="560" y="658" />
+              <mxPoint x="560" y="638" />
+              <mxPoint x="300" y="638" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge13" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.250;entryY=0.000;entryDx=0;entryDy=0;" parent="1" source="node1" target="node0" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="802" y="1218" />
+              <mxPoint x="800" y="1218" />
+              <mxPoint x="800" y="998" />
+              <mxPoint x="920" y="998" />
+              <mxPoint x="920" y="818" />
+              <mxPoint x="662" y="818" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge0" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.750;exitY=0.000;exitDx=0;exitDy=0;entryX=0.750;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node1" target="node5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="958" y="1218" />
+              <mxPoint x="960" y="1218" />
+              <mxPoint x="960" y="478" />
+              <mxPoint x="660" y="478" />
+              <mxPoint x="660" y="418" />
+              <mxPoint x="658" y="418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node1" target="node11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="802" y="1218" />
+              <mxPoint x="800" y="1218" />
+              <mxPoint x="800" y="998" />
+              <mxPoint x="560" y="998" />
+              <mxPoint x="560" y="638" />
+              <mxPoint x="300" y="638" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.750;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node9" target="node5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="478" />
+              <mxPoint x="660" y="478" />
+              <mxPoint x="660" y="418" />
+              <mxPoint x="658" y="418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.750;exitY=0.000;exitDx=0;exitDy=0;entryX=0.250;entryY=0.000;entryDx=0;entryDy=0;" parent="1" source="node4" target="node1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="1450" />
+              <mxPoint x="700" y="1198" />
+              <mxPoint x="802" y="1198" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge15" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.250;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node4" target="node5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="491" y="1418" />
+              <mxPoint x="60" y="1418" />
+              <mxPoint x="60" y="1378" />
+              <mxPoint x="-160" y="1378" />
+              <mxPoint x="-160" y="458" />
+              <mxPoint x="502" y="458" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label95" value="" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;strokeColor=default;" parent="edge15" vertex="1" connectable="0">
+          <mxGeometry x="502" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.583;entryY=0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="node4" target="node10" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="489" y="1418" />
+              <mxPoint x="60" y="1418" />
+              <mxPoint x="60" y="1378" />
+              <mxPoint x="660" y="1378" />
+              <mxPoint x="660" y="1038" />
+              <mxPoint x="489" y="1038" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThinstartSize=12;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.250;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node4" target="node3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="491" y="1418" />
+              <mxPoint x="60" y="1418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=diamondThin;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.487;exitY=-0.006;exitDx=0;exitDy=0;exitPerimeter=0;startFill=1;startSize=12;entryX=0.573;entryY=1.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="node10" target="node2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="456" y="890" />
+              <mxPoint x="456" y="890" />
+            </Array>
+            <mxPoint x="456.0249999999998" y="1087.1500000000003" as="sourcePoint" />
+            <mxPoint x="458.095" y="889.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=openThin;endSize=12;strokeColor=#595959;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node3" target="node9" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.750;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node6" target="node5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="418" />
+              <mxPoint x="658" y="418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.500;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node7" target="node8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.500;exitY=0.000;exitDx=0;exitDy=0;entryX=0.750;entryY=1.000;entryDx=0;entryDy=0;" parent="1" source="node11" target="node5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="478" />
+              <mxPoint x="660" y="478" />
+              <mxPoint x="660" y="418" />
+              <mxPoint x="658" y="418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
