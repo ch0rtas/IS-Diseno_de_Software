@@ -1,8 +1,10 @@
 /**
  * Patrón State (Tema 02) - Ejercicio Biblioteca
  *
+ * Biblioteca especializada con patrón Singleton, instanciación en static
+ *
  * @author Manuel Martínez Ramón
- * @date 2025.03.24
+ * @date 2025.04.02
  * @course INSO 2 - Diseño de Software
  */
 package Tema02.PatronState.library;
@@ -10,22 +12,27 @@ package Tema02.PatronState.library;
 import Tema02.PatronObserver.library.Book;
 import Tema02.PatronObserver.library.Library;
 
-import java.time.LocalDate;
-
 public class LoansLibrary extends Library {
-    public LoansLibrary() {
+    private static LoansLibrary loansLibrary;
+
+    private LoansLibrary() {
         super();
     }
 
-    public void returnBook(Book book, LibraryLoanRequestContext libraryLoanRequestContext) {
-        System.out.println("Notification to user : " + libraryLoanRequestContext.getLibraryUser().getName() +
-                ", library loan returned on " + LocalDate.now() +
-                ", " + book);
+    static {
+        loansLibrary = new LoansLibrary();
+    }
 
-        libraryLoanRequestContext.setState(new FinishedState());
+    public static LoansLibrary getInstance() {
+        return loansLibrary;
+    }
+
+    public void returnBook(Book book, LibraryLoanRequestContext libraryLoanRequestContext) {
+        super.returnBook(book);
+        this.processLibraryLoan(libraryLoanRequestContext);
     }
 
     public void processLibraryLoan(LibraryLoanRequestContext libraryLoanRequestContext) {
-        libraryLoanRequestContext.process();
+        libraryLoanRequestContext.process(); // Delegación por inyección
     }
 }
