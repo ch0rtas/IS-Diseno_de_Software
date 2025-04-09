@@ -48,9 +48,9 @@ La solución se encuentra en la carpeta `PatronObserver` con la siguiente estruc
    ├── 📄 ModelPullPushObserver.java
    ├── 📄 StockDepartmentObserver.java
    ├── 📄 README.md
-   ├── 📄 UML1.drawio
-   ├── 🖼️ UML1.drawio.png
-   └── 🖼️ UML1.png
+   ├── 📄 UML.drawio
+   ├── 🖼️ UML.drawio.png
+   └── 🖼️ UML.png
 ```
 
 ---
