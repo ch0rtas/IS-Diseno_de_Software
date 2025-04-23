@@ -10,9 +10,7 @@ package Tema02.PatronAbstractFactory.demonfactory;
 import Tema02.PatronAbstractFactory.Ejercicio37.Enemy;
 import Tema02.PatronAbstractFactory.Ejercicio37.Daemon;
 import Tema02.PatronAbstractFactory.Ejercicio37.Witch;
-import Tema02.PatronAbstractFactory.Ejercicio37.EnemyAbstractFactory;
-import Tema02.PatronAbstractFactory.Ejercicio37.World1AbstractFactory;
-import Tema02.PatronAbstractFactory.Ejercicio37.World2AbstractFactory;
+import Tema02.PatronAbstractFactory.Ejercicio37.World;
 
 public class GameController {
     private static GameController gameController = new GameController(new World1AbstractFactory());
@@ -21,17 +19,17 @@ public class GameController {
         return gameController;
     }
 
-    private EnemyAbstractFactory enemyAbstractFactory;
+    private Tema02.PatronAbstractFactory.demonfactory.EnemyAbstractFactory enemyAbstractFactory;
 
-    private GameController(EnemyAbstractFactory enemyAbstractFactory) {
+    private GameController(Tema02.PatronAbstractFactory.demonfactory.EnemyAbstractFactory enemyAbstractFactory) {
         this.enemyAbstractFactory = enemyAbstractFactory;
     }
 
-    public EnemyAbstractFactory getEnemyAbstractFactory() {
+    public Tema02.PatronAbstractFactory.demonfactory.EnemyAbstractFactory getEnemyAbstractFactory() {
         return enemyAbstractFactory;
     }
 
-    public void setEnemyAbstractFactory(EnemyAbstractFactory enemyAbstractFactory) {
+    public void setEnemyAbstractFactory(Tema02.PatronAbstractFactory.demonfactory.EnemyAbstractFactory enemyAbstractFactory) {
         this.enemyAbstractFactory = enemyAbstractFactory;
     }
 
