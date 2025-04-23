@@ -7,6 +7,8 @@
  */
 package Tema02.PatronAbstractFactory.Ejercicio37;
 
+import Tema02.PatronAbstractFactory.demonfactory.GameController;
+
 public class DaemonGameTest {
     public static void main(String[] args) {
         GameController game = GameController.getInstance();

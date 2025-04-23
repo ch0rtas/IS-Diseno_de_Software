@@ -10,4 +10,5 @@ package Tema02.PatronAbstractFactory.Ejercicio37;
 public interface EnemyAbstractFactory {
     Daemon createDaemon();
     Witch createWitch();
+    Enemy createEnemy();
 }

@@ -9,6 +9,9 @@ package Tema02.PatronAbstractFactory.Ejercicio37;
 
 public interface Enemy {
     String getName();
-    int getPower();
-    int getLives();
+    void setName(String name);
+    Integer getPower();
+    void setPower(Integer power);
+    Integer getLives();
+    void setLives(Integer lives);
 }

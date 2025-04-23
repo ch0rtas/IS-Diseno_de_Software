@@ -9,4 +9,5 @@ package Tema02.PatronAbstractFactory.Ejercicio37;
 
 public interface Daemon extends Enemy {
     String getColor();
+    void setColor(String color);
 }

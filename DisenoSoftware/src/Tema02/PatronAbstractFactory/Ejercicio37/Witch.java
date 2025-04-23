@@ -9,4 +9,5 @@ package Tema02.PatronAbstractFactory.Ejercicio37;
 
 public interface Witch extends Enemy {
     String getMagicPower();
+    void setMagicPower(String magicPower);
 }
