@@ -21,11 +21,6 @@ public class World2AbstractFactory implements EnemyAbstractFactory {
 
     @Override
     public Enemy createEnemy() {
-        // En el mundo 2, la probabilidad es 30/70
-        if (Math.random() < 0.3) {
-            return createDaemon();
-        } else {
-            return createWitch();
-        }
+        return null; // No se usa en el Ejercicio 37
     }
 } 
