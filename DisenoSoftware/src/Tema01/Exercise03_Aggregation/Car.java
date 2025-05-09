@@ -5,7 +5,7 @@
  * @date 2025.03.19
  * @course INSO 2 - Diseño de Software
  */
-package Tema03.Exercise03_Aggregation;
+package Tema01.Exercise03_Aggregation;
 
 // Importación de la clase ElectricCar y Engine
 import Tema01.Exercise02_Composition.ElectricCar;

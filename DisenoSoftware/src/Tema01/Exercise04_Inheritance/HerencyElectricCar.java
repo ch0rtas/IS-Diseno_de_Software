@@ -5,10 +5,10 @@
  * @date 2025.03.19
  * @course INSO 2 - Diseño de Software
  */
-package Tema04.Exercise04_Inheritance;
+package Tema01.Exercise04_Inheritance;
 
 // Importación de la clase Car y Engine
-import Tema03.Exercise03_Aggregation.Car;
+import Tema01.Exercise03_Aggregation.Car;
 import Tema01.Exercise01_EngineBasics.Engine;
 
 public class HerencyElectricCar extends Car {
