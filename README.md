@@ -55,11 +55,9 @@ Este repositorio contiene una colección de implementaciones y ejercicios práct
 - Cada implementación incluye documentación detallada
 - Se utilizan patrones de diseño para resolver problemas específicos
 
-## 👥 Autores
+## 👥 Autor
 
-- Luis Marquina
 - Manuel Martínez
-- Miguel Toran
 
 Estudiantes de la Universidad U-Tad, Grado en Ingeniería de Software
 
