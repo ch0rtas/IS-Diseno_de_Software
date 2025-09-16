@@ -4,7 +4,7 @@ En este documento voy a organizar y estructurar mi aprendizaje de Java desde cer
 
 ---
 
-## 1. Introducción a Java 🌱
+## 1. Introducción a Java 🌱x
 - 1.1 Historia de Java
 - 1.2 Instalación de Java (JDK, IDEs)
 - 1.3 Estructura básica de un programa en Java
